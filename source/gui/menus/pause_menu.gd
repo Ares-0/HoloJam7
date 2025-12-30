@@ -53,4 +53,4 @@ func _on_options_b_pressed() -> void:
 func _on_menu_b_pressed() -> void:
 	paused = false
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://source/gui/title_screen.tscn")
+	get_tree().change_scene_to_file("res://source/gui/menus/title_screen.tscn")
