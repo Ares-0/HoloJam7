@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2ii1dwbjera2"]
+
+[ext_resource type="Script" uid="uid://bbck4r1248pvy" path="res://source/gui/pause_menu.gd" id="1_u8v28"]
+
+[sub_resource type="Gradient" id="Gradient_u8v28"]
+offsets = PackedFloat32Array(0.4331984)
+colors = PackedColorArray(0.5882353, 0.62352943, 1, 0.3529412)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2e4py"]
+gradient = SubResource("Gradient_u8v28")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_2e4py"]
+offsets = PackedFloat32Array(0.534413)
+colors = PackedColorArray(0.65825737, 0.36385155, 0.379744, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gw0dn"]
+gradient = SubResource("Gradient_2e4py")
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u8v28")
+
+[node name="BGFade" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_2e4py")
+
+[node name="PauseUI" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = -300.0
+offset_right = 1920.0
+texture = SubResource("GradientTexture2D_gw0dn")
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PauseUI/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseUI/MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="ResumeB" type="Button" parent="PauseUI/MarginContainer/CenterContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Resume"
+
+[node name="OptionsB" type="Button" parent="PauseUI/MarginContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Options"
+
+[node name="MenuB" type="Button" parent="PauseUI/MarginContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Quit
+"
+
+[connection signal="pressed" from="PauseUI/MarginContainer/CenterContainer/HBoxContainer/ResumeB" to="." method="_on_resume_b_pressed"]
+[connection signal="pressed" from="PauseUI/MarginContainer/CenterContainer/HBoxContainer/OptionsB" to="." method="_on_options_b_pressed"]
+[connection signal="pressed" from="PauseUI/MarginContainer/CenterContainer/HBoxContainer/MenuB" to="." method="_on_menu_b_pressed"]
