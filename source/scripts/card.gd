@@ -1,9 +1,22 @@
+class_name Card
 extends StaticBody2D
 
 @export var tasteDict : Dictionary = {
 	"sweet" : 0, 
 	"umami" : 0
 }
+
+enum State {
+	READY,
+	HELD,
+	FOCUS	# Looking closer at the card in the hand
+}
+
+var current_state: int = State.HELD
+
+var tween_t: Tween # tween dedicated to transform
+var neutral_transform: Transform2D
+var neutral_z_idx: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,3 +26,49 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func focus_on() -> void:
+	# transform the card so it's easier to read
+	# larger, more centered, in front of hand
+	if current_state != State.HELD:
+		return
+	
+	# interrupt settling from unfocus
+	if tween_t:
+		tween_t.kill()
+		self.transform = neutral_transform
+
+	# 1 frame transform
+	self.scale = Vector2(1.5, 1.5) # todo: const all these
+	self.position = self.position + Vector2(0,-50)
+
+	(self.get_parent() as Hand).set_hand_focus(self)
+	current_state = State.FOCUS
+
+func unfocus() -> void:
+	# return card to neutral state in hand
+	if current_state != State.FOCUS:
+		return
+
+	# ease back
+	tween_t = get_tree().create_tween()
+	tween_t.tween_property(self, "transform", neutral_transform, 0.3)
+	self.z_index = neutral_z_idx
+	current_state = State.HELD
+
+func set_neutral_transform(transform_n: Transform2D, zidx: int) -> void:
+	# set the base transform for the card when it is held in hand
+	# focusing on a card will deviate from this neutral state,
+	# then losing focus will ease back to this base
+	self.neutral_transform = transform_n
+	self.neutral_z_idx = zidx
+
+	tween_t = get_tree().create_tween()
+	tween_t.tween_property(self, "transform", neutral_transform, 0.3)
+	self.z_index = zidx
+
+func _on_mouse_entered() -> void:
+	self.focus_on()
+
+func _on_mouse_exited() -> void:
+	self.unfocus()

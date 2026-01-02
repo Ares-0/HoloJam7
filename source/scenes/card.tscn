@@ -1,12 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://cecqfhp7ci7rn"]
+[gd_scene load_steps=4 format=3 uid="uid://cecqfhp7ci7rn"]
 
 [ext_resource type="Script" uid="uid://cb15b8qpxdf6y" path="res://source/scripts/card.gd" id="1_vbr0r"]
+[ext_resource type="Texture2D" uid="uid://kagyq5irug3t" path="res://icon.svg" id="2_onr8g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onr8g"]
+size = Vector2(128, 206)
 
 [node name="card" type="StaticBody2D"]
+input_pickable = true
 script = ExtResource("1_vbr0r")
 
 [node name="sprites" type="Node2D" parent="."]
 
 [node name="card template" type="Sprite2D" parent="sprites"]
+scale = Vector2(1, 1.6)
+texture = ExtResource("2_onr8g")
 
 [node name="card image" type="Sprite2D" parent="sprites"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_onr8g")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

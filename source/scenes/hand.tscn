@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2h77cacxh2qp"]
+
+[ext_resource type="Script" uid="uid://cwujsw51qnfmc" path="res://source/scripts/hand.gd" id="1_wgduh"]
+[ext_resource type="Texture2D" uid="uid://kagyq5irug3t" path="res://icon.svg" id="2_xy3rk"]
+
+[node name="Hand" type="Node2D"]
+script = ExtResource("1_wgduh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.265625, 0.09375)
+texture = ExtResource("2_xy3rk")
