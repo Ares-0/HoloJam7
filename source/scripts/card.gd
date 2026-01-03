@@ -3,7 +3,7 @@ extends StaticBody2D
 
 @export var card_name: String
 @export var image_path: String
-@export var cost: float
+@export var cost: int
 @export var tasteDict : Dictionary = {
 	"sweet" : 0,
 	"salty": 0,
@@ -40,9 +40,30 @@ func setup_from_data(name_c: String) -> void:
 
 func setup_from_card_num(num: int) -> void:
 	# Look up the given card number in the cube and setup with that info
+	# Info todo: image
 	var info = CardCube.get_card_info(num)
+	
 	card_name = info["name"]
+	cost = int(info["cost"])
+
+	tasteDict["sweet"] = int(info["taste_profile"]["sweet"])
+	tasteDict["salty"] = int(info["taste_profile"]["salty"])
+	tasteDict["sour"] = int(info["taste_profile"]["sour"])
+	tasteDict["umami"] = int(info["taste_profile"]["umami"])
+
+	update_face()
+
+func get_taste_values() -> Dictionary:
+	return tasteDict
+
+func update_face() -> void:
+	# pass all card info to the card ui
 	$NameLabel.text = card_name
+	$Control/StatA.text = str(tasteDict["sweet"])
+	$Control/StatB.text = str(tasteDict["salty"])
+	$Control/StatC.text = str(tasteDict["sour"])
+	$Control/StatD.text = str(tasteDict["umami"])
+	$Cost.text = str(cost)
 
 func focus_on() -> void:
 	# transform the card so it's easier to read
@@ -97,7 +118,8 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if current_state == State.FOCUS:
 		if Input.is_action_just_pressed("play_card"):
 			pass
-			#print("Playing card!")
+			print("Playing card!")
+			SignalBus.card_tapped.emit(self)
 		if Input.is_action_just_pressed("reroll_card"):
 			#print("Discarding card!")
 			current_state = State.PILE

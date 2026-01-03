@@ -13,7 +13,7 @@
 	"1": {
 		"image": "res://icon.svg",
 		"name": "Card 1",
-		"cost": 0,
+		"cost": 1,
 		"taste_profile": {
 			"sweet" : 1,
 			"salty": 0,
@@ -24,7 +24,7 @@
 	"2": {
 		"image": "res://icon.svg",
 		"name": "Card 2",
-		"cost": 0,
+		"cost": 2,
 		"taste_profile": {
 			"sweet" : 0,
 			"salty": 1,
@@ -35,7 +35,7 @@
 	"3": {
 		"image": "res://icon.svg",
 		"name": "Card 3",
-		"cost": 0,
+		"cost": 1,
 		"taste_profile": {
 			"sweet" : 0,
 			"salty": 0,
@@ -46,7 +46,7 @@
 	"4": {
 		"image": "res://icon.svg",
 		"name": "Card 4",
-		"cost": 0,
+		"cost": 2,
 		"taste_profile": {
 			"sweet" : 0,
 			"salty": 0,
