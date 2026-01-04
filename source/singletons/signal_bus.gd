@@ -10,6 +10,7 @@ signal pile_empty(pile: Pile) # emitted by piles, read by game manager?
 signal card_tapped(card: Card) # emitted by card, read by game manager
 
 # GUI
+# might rename to bell rung, if ui matches
 signal serve_pressed() # emitted by hud, read by game manager
 
 # dialog

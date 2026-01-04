@@ -24,20 +24,16 @@ var tween_t: Tween # tween dedicated to transform
 var neutral_transform: Transform2D
 var neutral_z_idx: int
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-	#$"sprites/card template".texture = load("res://icon.svg")
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
 	pass
 
-func setup_from_data(name_c: String) -> void:
-	# Setup card info with given data
-	card_name = name_c
-	$NameLabel.text = card_name
+func _process(_delta: float) -> void:
+	pass
+
+# func setup_from_data(name_c: String) -> void:
+# 	# Setup card info with given data
+# 	card_name = name_c
+# 	$NameLabel.text = card_name
 
 func setup_from_card_num(num: int) -> void:
 	# Look up the given card number in the cube and setup with that info
@@ -113,13 +109,15 @@ func tap() -> void:
 	# Play animations and update states
 	if current_state != State.FOCUS:
 		return
-
 	current_state = State.TAPPED
+
+	# Flourish / appply to recipe animation
 	# TODO: real animation / feedback
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(self, "position", self.position + Vector2(0,-400), 0.1)
 	await tween.finished
 	await get_tree().create_timer(0.5).timeout
+
 	SignalBus.card_tapped.emit(self)
 
 func _on_mouse_entered() -> void:

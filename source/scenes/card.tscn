@@ -24,10 +24,6 @@ font_size = 24
 [node name="card" type="StaticBody2D"]
 input_pickable = true
 script = ExtResource("1_vbr0r")
-card_name = null
-image_path = null
-cost = null
-tasteDict = null
 
 [node name="sprites" type="Node2D" parent="."]
 

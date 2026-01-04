@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cstfh15tab36h"]
+[gd_scene load_steps=3 format=3 uid="uid://cstfh15tab36h"]
 
 [ext_resource type="Script" uid="uid://cx8bepibgnw4y" path="res://source/gui/dev_hud.gd" id="1_8yjoi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8yjoi"]
+font_size = 19
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -17,6 +20,49 @@ offset_left = 1298.0
 offset_top = 218.0
 offset_right = 1541.0
 offset_bottom = 293.0
-text = "Serve"
+text = "Serve / Start"
+
+[node name="OrderSheet" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 132.0
+offset_top = 398.0
+offset_right = 172.0
+offset_bottom = 438.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OrderSheet"]
+layout_mode = 0
+offset_right = 166.0
+offset_bottom = 135.0
+
+[node name="ORDER" type="Label" parent="OrderSheet/VBoxContainer"]
+layout_mode = 2
+text = "ORDER #103"
+label_settings = SubResource("LabelSettings_8yjoi")
+horizontal_alignment = 1
+
+[node name="RecipeName" type="Label" parent="OrderSheet/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Dish Name"
+
+[node name="ReqA" type="Label" parent="OrderSheet/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0 sweet"
+
+[node name="ReqB" type="Label" parent="OrderSheet/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0 salty"
+
+[node name="ReqC" type="Label" parent="OrderSheet/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0 sour"
+
+[node name="ReqD" type="Label" parent="OrderSheet/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0 umami"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
