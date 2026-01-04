@@ -24,8 +24,8 @@ func _process(_delta: float) -> void:
 		#$Hand.add_card(card)
 
 		# draw a card from draw pile and add it to hand
-		var card: Card = $DrawPile.draw_card()
-		$Hand.add_card(card)
+		# var card: Card = $DrawPile.draw_card()
+		# $Hand.add_card(card)
 
 	if Input.is_action_just_pressed("debug_9"):
 		var card = card_scene.instantiate()

@@ -15,6 +15,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
+func get_cards_count() -> int:
+	return held_cards.size()
+
 func add_card(new_card: Card) -> void:
 	if new_card == null:
 		return

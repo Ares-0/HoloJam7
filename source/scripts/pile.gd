@@ -49,7 +49,7 @@ func place_card(card: Card) -> void:
 func draw_card() -> Card:
 	if cards.size() <= 0:
 		push_warning("Tried to draw a card from empty pile ", self.name)
-		return
+		return null
 
 	var last: Card = cards.pop_back()
 	if last.get_parent():
@@ -68,9 +68,33 @@ func draw_card() -> Card:
 func shuffle() -> void:
 	# There's a really 
 	cards.shuffle()
+	
+	# This animation has 0 to do with the players ability to draw from the pile
+	# TODO: play sound
+	$CardBack.rotation = PI
+	$CardBack2.rotation = -PI
+	$CardBack3.rotation = 0
+	
+	var tween1: Tween = get_tree().create_tween()
+	var tween2: Tween = get_tree().create_tween()
+	var tween3: Tween = get_tree().create_tween()
+	
+	tween1.tween_property($CardBack, "rotation", 0, 0.3)
+	tween2.tween_property($CardBack2, "rotation", 0, 0.3)
+	tween3.tween_property($CardBack3, "rotation", PI, 0.3)
+
+func set_card_backs_visible(value: bool) -> void:
+	$CardBack.visible = value
+	$CardBack2.visible = value
+	$CardBack3.visible = value
 
 func update_count() -> void:
 	var count: int = cards.size()
 	label.text = str(count)
 	if count == 0:
+		# standin for 
+		#await get_tree().process_frame
+		set_card_backs_visible(false)
 		SignalBus.pile_empty.emit(self)
+	else:
+		set_card_backs_visible(true)
