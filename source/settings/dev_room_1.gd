@@ -29,6 +29,6 @@ func _process(_delta: float) -> void:
 
 	if Input.is_action_just_pressed("debug_9"):
 		var card = card_scene.instantiate()
-		card.setup_from_card_num(randi_range(0,4))
+		card.setup_from_card_num(randi_range(1,4))
 		cards.append(card)
 		$DrawPile.add_card(card)

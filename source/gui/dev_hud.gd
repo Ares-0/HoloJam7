@@ -6,8 +6,16 @@ extends Control
 @onready var reqC_label: Label = %ReqC
 @onready var reqD_label: Label = %ReqD
 
+@onready var dishA_label: Label = %DishA
+@onready var dishB_label: Label = %DishB
+@onready var dishC_label: Label = %DishC
+@onready var dishD_label: Label = %DishD
+
 func _ready() -> void:
 	GameManager.HUD = self
+
+func update_feedback_label(text: String) -> void:
+	%DevFeedback.text = text
 
 func update_order_reqs(taste_reqs: Dictionary) -> void:
 	var temp: int = taste_reqs["sweet"]
@@ -25,6 +33,23 @@ func update_order_reqs(taste_reqs: Dictionary) -> void:
 	temp = taste_reqs["umami"]
 	reqD_label.text = str(temp, " umami")
 	reqD_label.visible = (temp != 0)
+
+func update_dish_stats(taste_state: Dictionary) -> void:
+	var temp: int = taste_state["sweet"]
+	dishA_label.text = str(temp, " sweet")
+	dishA_label.visible = (temp != 0)
+
+	temp = taste_state["salty"]
+	dishB_label.text = str(temp, " salty")
+	dishB_label.visible = (temp != 0)
+
+	temp = taste_state["sour"]
+	dishC_label.text = str(temp, " sour")
+	dishC_label.visible = (temp != 0)
+
+	temp = taste_state["umami"]
+	dishD_label.text = str(temp, " umami")
+	dishD_label.visible = (temp != 0)
 
 func _on_button_pressed() -> void:
 	SignalBus.serve_pressed.emit()

@@ -4,7 +4,7 @@ extends Node2D
 # Selection of cards available for use by the player
 # Arranges the cards for easy viewing and selection by player
 
-const HAND_WIDTH: float = 500.0
+const HAND_WIDTH: float = 650.0
 
 var held_cards: Array[Card] = []
 var focused_card: Card = null

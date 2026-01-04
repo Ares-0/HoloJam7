@@ -25,10 +25,10 @@ var HUD: DevHUD
 
 # dev
 var dish_taste = {
-	"a": 0,
-	"b": 0,
-	"c": 0,
-	"d": 0
+	"sweet": 0,
+	"salty": 0,
+	"sour": 0,
+	"umami": 0
 }
 
 
@@ -38,8 +38,8 @@ func _ready() -> void:
 	SignalBus.pile_empty.connect(_on_pile_empty)
 	SignalBus.serve_pressed.connect(_on_serve_pressed)
 
-	await get_tree().process_frame
-	order_begin_phase()
+	#await get_tree().process_frame
+	#order_begin_phase()
 
 func _process(delta: float) -> void:
 	pass
@@ -47,38 +47,43 @@ func _process(delta: float) -> void:
 		fill_hand()
 
 func add_values_to_dish(tastes: Dictionary) -> void:
-	dish_taste["a"] = dish_taste["a"] + tastes["sweet"]
-	dish_taste["b"] = dish_taste["b"] + tastes["salty"]
-	dish_taste["c"] = dish_taste["c"] + tastes["sour"]
-	dish_taste["d"] = dish_taste["d"] + tastes["umami"]
-	print(dish_taste)
+	dish_taste["sweet"] = dish_taste["sweet"] + tastes["sweet"]
+	dish_taste["salty"] = dish_taste["salty"] + tastes["salty"]
+	dish_taste["sour"] = dish_taste["sour"] + tastes["sour"]
+	dish_taste["umami"] = dish_taste["umami"] + tastes["umami"]
+	HUD.update_dish_stats(dish_taste)
+	#print(dish_taste)
 
 func eval_score() -> int:
 	# A score of 0 means the dish perfectly matched the taste
 	var score = 0
 
 	# simple algebra
-	score = score + abs(current_order.taste_reqs["sweet"] - dish_taste["a"])
-	score = score + abs(current_order.taste_reqs["salty"] - dish_taste["b"])
-	score = score + abs(current_order.taste_reqs["sour"] - dish_taste["c"])
-	score = score + abs(current_order.taste_reqs["umami"] - dish_taste["d"])
+	score = score + abs(current_order.taste_reqs["sweet"] - dish_taste["sweet"])
+	score = score + abs(current_order.taste_reqs["salty"] - dish_taste["salty"])
+	score = score + abs(current_order.taste_reqs["sour"] - dish_taste["sour"])
+	score = score + abs(current_order.taste_reqs["umami"] - dish_taste["umami"])
 
 	print("Lost ", score, " points! Good enough! Keep going!")
-	return score
+	return -score
 
 func dish_taste_reset() -> void:
-	dish_taste["a"] = 0
-	dish_taste["b"] = 0
-	dish_taste["c"] = 0
-	dish_taste["d"] = 0
-	print(dish_taste)
+	dish_taste["sweet"] = 0
+	dish_taste["salty"] = 0
+	dish_taste["sour"] = 0
+	dish_taste["umami"] = 0
+	HUD.update_dish_stats(dish_taste)
 
 func order_begin_phase() -> void:
 	# All the work done before a player can select cards
 	order_state = OrderState.BEGIN
 
+	# random orders for testing
 	var dev_order: Order = load("res://source/scenes/order.tscn").instantiate()
-	dev_order.setup_reqs([0,1,2,0])
+	var random_reqs: Array[int] = [0,1,2,0]
+	random_reqs.shuffle()
+	dev_order.setup_reqs(random_reqs)
+
 	current_order = dev_order
 
 	# Tell customer window what customer to display
@@ -86,6 +91,7 @@ func order_begin_phase() -> void:
 
 	# Tell order window what order to display
 	HUD.update_order_reqs(current_order.taste_reqs)
+	HUD.update_dish_stats(dish_taste)
 
 	# Fill hand with cards
 	# fill_hand()
@@ -106,10 +112,15 @@ func order_serve_phase() -> void:
 	# Collect feedback
 	var score: int = eval_score()
 	# and do what with the score
+	HUD.update_feedback_label(str("dish score: ", score))
 	dish_taste_reset()
 
 	# Fill hand with cards
 	fill_hand()
+	
+	# automatically return to begin phase
+	# I actually don't like the stack growing like this
+	order_begin_phase()
 
 func fill_hand() -> void:
 	# Check if players hand is full and if not draw cards from pile to add to it
