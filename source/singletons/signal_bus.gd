@@ -5,8 +5,9 @@ extends Node
 @warning_ignore_start("unused_signal")
 
 # card handling
-signal discard(card: Card) # emitted by selected cards, read by game manager?
-signal pile_empty(pile: Pile) # emitted by piles, read by game manager?
+signal discard(card: Card) # emitted by selected cards, read by game manager
+signal reroll(card: Card) # emitted by selected cards, read by game manager
+signal pile_empty(pile: Pile) # emitted by piles, read by game manager
 signal card_tapped(card: Card) # emitted by card, read by game manager
 
 # GUI

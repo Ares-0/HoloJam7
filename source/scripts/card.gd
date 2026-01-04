@@ -135,4 +135,5 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		if Input.is_action_just_pressed("reroll_card"):
 			#print("Discarding card!")
 			current_state = State.PILE
-			SignalBus.discard.emit(self)
+			# SignalBus.discard.emit(self)
+			SignalBus.reroll.emit(self)

@@ -34,6 +34,7 @@ var dish_taste = {
 
 func _ready() -> void:
 	SignalBus.discard.connect(_on_discard)
+	SignalBus.reroll.connect(_on_reroll)
 	SignalBus.card_tapped.connect(_on_card_tapped)
 	SignalBus.pile_empty.connect(_on_pile_empty)
 	SignalBus.serve_pressed.connect(_on_serve_pressed)
@@ -136,10 +137,23 @@ func _on_discard(card: Card) -> void:
 	hand.take_card(card)
 	discard_pile.place_card(card)
 
+func _on_reroll(card: Card) -> void:
+	hand.take_card(card)
+	discard_pile.place_card(card)
+
+	# pull these to function?
+	var new_card: Card = draw_pile.draw_card()
+	if new_card != null:
+		hand.add_card(new_card)
+
 func _on_card_tapped(card: Card) -> void:
 	add_values_to_dish(card.get_taste_values())
 	hand.take_card(card)
 	discard_pile.place_card(card)
+
+	var new_card: Card = draw_pile.draw_card()
+	if new_card != null:
+		hand.add_card(new_card)
 
 func _on_pile_empty(pile: Pile) -> void:
 	# If there's very few cards so both packs are empty, it can cause some soft locks
