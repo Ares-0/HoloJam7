@@ -53,6 +53,9 @@ func setup_from_card_num(num: int) -> void:
 func get_taste_values() -> Dictionary:
 	return tasteDict
 
+func get_cost() -> int:
+	return cost
+
 func update_face() -> void:
 	# pass all card info to the card ui
 	$NameLabel.text = card_name
@@ -77,6 +80,7 @@ func focus_on() -> void:
 	self.scale = Vector2(1.5, 1.5) # todo: const all these
 	self.position = self.position + Vector2(0,-50)
 
+	# TODO: tapping multiple cards at once can cause this to fail
 	(self.get_parent() as Hand).set_hand_focus(self)
 	current_state = State.FOCUS
 
@@ -118,6 +122,7 @@ func tap() -> void:
 	await tween.finished
 	await get_tree().create_timer(0.5).timeout
 
+	# At this signal the card has been "played", but manager has to apply points then discard it
 	SignalBus.card_tapped.emit(self)
 
 func _on_mouse_entered() -> void:

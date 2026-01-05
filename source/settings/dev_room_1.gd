@@ -11,6 +11,7 @@ func _ready() -> void:
 	GameManager.draw_pile = $DrawPile
 	GameManager.discard_pile = $DiscardPile
 	GameManager.hand = $Hand
+	GameManager.order_gen = $OrderGenerator
 
 func _process(_delta: float) -> void:
 	pass
@@ -28,7 +29,8 @@ func _process(_delta: float) -> void:
 		# $Hand.add_card(card)
 
 	if Input.is_action_just_pressed("debug_9"):
-		var card = card_scene.instantiate()
-		card.setup_from_card_num(randi_range(1,4))
-		cards.append(card)
-		$DrawPile.add_card(card)
+		pass
+		# var card = card_scene.instantiate()
+		# card.setup_from_card_num(randi_range(1,4))
+		# cards.append(card)
+		# $DrawPile.add_card(card)
