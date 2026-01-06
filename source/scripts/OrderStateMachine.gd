@@ -23,12 +23,23 @@ enum OrderState {
 }
 var order_state: OrderState = OrderState.WAIT
 
+var total_orders: int = 0
+var current_order: int = 0
+
 func _ready() -> void:
 	GameManager.order_machine = self
+
+func set_total_orders(value: int) -> void:
+	total_orders = value
+	GameManager.HUD.set_total_orders(total_orders)
 
 func order_begin_phase() -> void:
 	# All the work done before a player can select cards
 	order_state = OrderState.BEGIN
+
+	# ususally increment at end
+	if current_order == 0:
+		current_order = current_order + 1
 
 	# GameManager.order_gen.set_difficulty(a)
 	GameManager.current_order = GameManager.order_gen.get_single_order()
@@ -36,10 +47,12 @@ func order_begin_phase() -> void:
 	# Tell customer window what customer to display
 	# customer_window.show_customer(daily_orders.customer_name)
 	GameManager.customer.move_onscreen()
+	await SignalBus.customer_done_moving
 
 	# Tell order window what order to display
 	GameManager.HUD.update_order_reqs(GameManager.current_order.taste_reqs)
 	GameManager.HUD.update_dish_stats(GameManager.dish_taste)
+	GameManager.HUD.update_current_order(current_order)
 
 	# Fill hand with cards (backup)
 	GameManager.fill_hand()
@@ -70,9 +83,13 @@ func order_serve_phase() -> void:
 	# Fill hand with cards
 	GameManager.fill_hand()
 	
-	# automatically return to begin phase
-	# I actually don't like the stack growing like this
-	order_begin_phase()
+	if current_order == total_orders:
+		SignalBus.all_orders_completed.emit()
+	else:
+		current_order = current_order + 1
+		# automatically return to begin phase
+		# I actually don't like the stack growing like this
+		order_begin_phase()
 
 func _on_serve_pressed() -> void:
 	# Instead of directly looking at the button, waits for 

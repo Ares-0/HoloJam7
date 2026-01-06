@@ -3,6 +3,8 @@ extends Control
 
 # NOTE: This currently doesnt scale to resolution AT ALL
 
+var total_orders: int = 0
+
 @onready var reqA_label: Label = %ReqA
 @onready var reqB_label: Label = %ReqB
 @onready var reqC_label: Label = %ReqC
@@ -12,6 +14,8 @@ extends Control
 @onready var dishB_label: Label = %DishB
 @onready var dishC_label: Label = %DishC
 @onready var dishD_label: Label = %DishD
+
+@onready var order_nums: Label = %OrderProgress
 
 # Clock works on its own
 
@@ -52,3 +56,10 @@ func update_dish_stats(taste_state: Dictionary) -> void:
 	temp = taste_state["umami"]
 	dishD_label.text = str(temp, " umami")
 	dishD_label.visible = (temp != 0)
+
+func set_total_orders(value: int) -> void:
+	total_orders = value
+
+func update_current_order(value: int) -> void:
+	# todo: resize or something for double digit orders
+	order_nums.text = "%d/%d" % [value, total_orders]

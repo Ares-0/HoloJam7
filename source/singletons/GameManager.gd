@@ -30,6 +30,7 @@ var order_gen: OrderGenerator
 var customer: Customer
 
 var current_order: Order
+var total_orders: int
 
 var dish_taste = {
 	"sweet": 0,
@@ -107,6 +108,10 @@ func fill_hand() -> void:
 
 func day_setup_phase() -> void:
 	day_state = DayState.SETUP
+	# determine number of orders for the day
+	total_orders = 6
+	order_machine.set_total_orders(total_orders)
+	HUD.set_total_orders(total_orders)
 	game_timer.setup(30)
 	fill_hand()
 
@@ -125,6 +130,7 @@ func day_fail_phase() -> void:
 	# Take order away, hide customer
 	# Reset to start of day
 	print("day failed!")
+
 
 func _on_discard(card: Card) -> void:
 	hand.take_card(card)

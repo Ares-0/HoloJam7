@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://blma87368m17f"]
+[gd_scene load_steps=15 format=3 uid="uid://blma87368m17f"]
 
 [ext_resource type="Script" uid="uid://1grwospwaa7k" path="res://source/gui/game_ui.gd" id="1_0cyqu"]
 [ext_resource type="Texture2D" uid="uid://dwrbg425et6eg" path="res://assets/ui/UI_Sidebar.png" id="3_1j0tq"]
@@ -18,7 +18,7 @@ outline_color = Color(0.8627451, 0.4392157, 0.27058825, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_72gkx"]
 line_spacing = 26.75
 font = ExtResource("7_v2kgr")
-font_size = 44
+font_size = 42
 outline_size = 14
 outline_color = Color(0.8627451, 0.4392157, 0.27058825, 1)
 
@@ -27,6 +27,24 @@ line_spacing = -0.025
 font = ExtResource("8_72gkx")
 font_size = 37
 outline_size = 12
+outline_color = Color(0.8627451, 0.4392157, 0.27058825, 1)
+
+[sub_resource type="Gradient" id="Gradient_cnw61"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.53898305, 0.5966102, 0.6101695)
+colors = PackedColorArray(0.9607843, 0.9019608, 0.7882353, 1, 0.75686276, 0.4862745, 0.3647059, 1, 0.30588236, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_72gkx"]
+gradient = SubResource("Gradient_cnw61")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0cyqu"]
+font = ExtResource("7_v2kgr")
+font_size = 38
+outline_size = 14
 outline_color = Color(0.8627451, 0.4392157, 0.27058825, 1)
 
 [node name="GameUI" type="Control"]
@@ -78,16 +96,16 @@ texture = ExtResource("5_8mydn")
 
 [node name="OrderHeader" type="Label" parent="Order/FrameOrder"]
 layout_mode = 0
-offset_left = 54.0
+offset_left = 46.0
 offset_top = 232.0
 offset_right = 382.0
 offset_bottom = 318.0
-text = "Order #X"
+text = "Order"
 label_settings = SubResource("LabelSettings_72gkx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="Order/FrameOrder"]
+[node name="OrderName" type="Label" parent="Order/FrameOrder"]
 layout_mode = 0
 offset_left = 56.0
 offset_top = 281.0
@@ -214,3 +232,29 @@ offset_bottom = 938.0
 text = "x umami"
 label_settings = SubResource("LabelSettings_jcs87")
 vertical_alignment = 1
+
+[node name="Sticker" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 323.0
+offset_top = 164.0
+offset_right = 505.0
+offset_bottom = 292.0
+rotation = 0.22551784
+texture = SubResource("GradientTexture2D_72gkx")
+
+[node name="OrderProgress" type="Label" parent="Sticker"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = -19.5
+offset_right = 53.5
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0/6"
+label_settings = SubResource("LabelSettings_0cyqu")
