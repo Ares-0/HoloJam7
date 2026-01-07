@@ -34,11 +34,12 @@ func day_setup_phase() -> void:
 	# determine number of orders for the day
 	total_orders = 6
 	GameManager.set_total_order_num(total_orders)
+	GameManager.HUD.update_current_order_num(0)
 
 	# GameManager.order_gen.set_difficulty(a)
 
 	GameManager.game_timer.setup(time_in_day)
-	GameManager.dish_taste_reset()
+	GameManager.reset_dish_hud()
 	GameManager.fill_hand()
 
 func day_order_phase() -> void:
@@ -54,15 +55,19 @@ func day_pass_phase() -> void:
 	# bring up interface to add / remove cards
 
 func day_fail_phase() -> void:
-	# Freeze input
+	print("day failed!")
 
-	# Take order away, 
+	# Freeze input
+	GameManager.order_machine.end_on_fail()
+
+	# Take order away
 
 	# hide customer
 	GameManager.customer.move_offscreen()
 
 	# Reset to start of day
-	print("day failed!")
+	# delay?
+	GameManager.game_over_menu.reveal()
 
 func _on_time_ran_out() -> void:
 	day_fail_phase()

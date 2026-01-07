@@ -59,7 +59,10 @@ func update_dish_stats(taste_state: Dictionary) -> void:
 	dishD_label.visible = (temp != 0)
 
 func set_order_name(name_s: String) -> void:
-	order_name.text = str("1x ", name_s)
+	if name_s == "":
+		order_name.text = ""
+	else:
+		order_name.text = str("1x ", name_s)
 
 func set_total_orders(value: int) -> void:
 	total_orders = value
