@@ -61,6 +61,7 @@ func set_total_order_num(value: int) -> void:
 func get_new_order(order_num: int) -> void:
 	current_order = order_gen.get_single_order()
 	HUD.update_order_reqs(current_order.taste_reqs)
+	HUD.set_order_name(current_order.recipe_name)
 	HUD.update_dish_stats(dish_taste)
 	HUD.update_current_order_num(order_num)
 

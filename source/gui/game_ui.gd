@@ -16,6 +16,7 @@ var total_orders: int = 0
 @onready var dishD_label: Label = %DishD
 
 @onready var order_nums: Label = %OrderProgress
+@onready var order_name: Label = %OrderName
 
 # Clock works on its own
 
@@ -56,6 +57,9 @@ func update_dish_stats(taste_state: Dictionary) -> void:
 	temp = taste_state["umami"]
 	dishD_label.text = str(temp, " umami")
 	dishD_label.visible = (temp != 0)
+
+func set_order_name(name_s: String) -> void:
+	order_name.text = str("1x ", name_s)
 
 func set_total_orders(value: int) -> void:
 	total_orders = value
