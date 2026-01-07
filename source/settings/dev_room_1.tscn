@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bksmk5evfkfln"]
+[gd_scene load_steps=16 format=3 uid="uid://bksmk5evfkfln"]
 
 [ext_resource type="PackedScene" uid="uid://b2ii1dwbjera2" path="res://source/gui/menus/pause_menu.tscn" id="1_i7gob"]
 [ext_resource type="Script" uid="uid://densox0ndrugk" path="res://source/settings/dev_room_1.gd" id="1_l6tno"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://b41bwcwuvkflo" path="res://assets/characters/Haachama.png" id="11_2em5d"]
 [ext_resource type="Texture2D" uid="uid://evrdbfaus6cy" path="res://assets/Mock_2.png" id="11_3yupx"]
 [ext_resource type="PackedScene" uid="uid://dm76iwe5uaqsx" path="res://source/scenes/customer.tscn" id="12_tsjc1"]
+[ext_resource type="Texture2D" uid="uid://dxaob4yd5llv2" path="res://assets/cursor_none.png" id="14_mwrjf"]
+[ext_resource type="Script" uid="uid://io071xrea3bq" path="res://source/scripts/mouse_pointer.gd" id="15_0wurm"]
 
 [node name="DevRoom1" type="Node"]
 script = ExtResource("1_l6tno")
@@ -65,3 +67,14 @@ centered = false
 visible = false
 texture = ExtResource("11_3yupx")
 centered = false
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="CursorNone" type="Sprite2D" parent="CanvasLayer2"]
+modulate = Color(0.6862745, 0.42352942, 0.29803923, 1)
+top_level = true
+z_index = 4096
+texture = ExtResource("14_mwrjf")
+centered = false
+script = ExtResource("15_0wurm")
