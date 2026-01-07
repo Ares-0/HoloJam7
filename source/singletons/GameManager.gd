@@ -18,6 +18,7 @@ var debugHUD: DevHUD
 var game_timer: GameTimer
 var game_over_menu: GameOverMenu
 
+var cook: Customer
 var customer: Customer
 var order_gen: OrderGenerator
 
@@ -171,4 +172,7 @@ func _on_serve_pressed() -> void:
 		order_machine._on_serve_pressed()
 
 func _on_restart_day() -> void:
-	pass
+	print("retrying day")
+	order_machine.reset()
+	reset_dish_hud()
+	day_machine.day_setup_phase()

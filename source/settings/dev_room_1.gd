@@ -13,6 +13,7 @@ func _ready() -> void:
 	GameManager.hand = $Hand
 	GameManager.order_gen = $OrderGenerator
 	GameManager.customer = $Customer
+	GameManager.cook = $Haachama
 
 func _process(_delta: float) -> void:
 	pass

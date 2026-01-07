@@ -22,6 +22,7 @@ var current_state: DayState = DayState.SETUP
 
 var time_in_day: int = 300
 var total_orders: int # theres redundant copies of this var, one in each machine
+var current_day: int = 1
 
 func _ready() -> void:
 	GameManager.day_machine = self
@@ -38,9 +39,12 @@ func day_setup_phase() -> void:
 
 	# GameManager.order_gen.set_difficulty(a)
 
+	GameManager.HUD.set_current_day(current_day)
 	GameManager.game_timer.setup(time_in_day)
 	GameManager.reset_dish_hud()
 	GameManager.fill_hand()
+
+	GameManager.cook.move_onscreen()
 
 func day_order_phase() -> void:
 	current_state = DayState.ORDER
@@ -49,13 +53,15 @@ func day_order_phase() -> void:
 
 func day_pass_phase() -> void:
 	print("day successful!")
-
-	# stop player input
+	current_state = DayState.PASS
 
 	# bring up interface to add / remove cards
 
+	# advance day number
+
 func day_fail_phase() -> void:
 	print("day failed!")
+	current_state = DayState.FAIL
 
 	# Freeze input
 	GameManager.order_machine.end_on_fail()
@@ -69,8 +75,13 @@ func day_fail_phase() -> void:
 	# delay?
 	GameManager.game_over_menu.reveal()
 
+	await get_tree().create_timer(0.5).timeout
+	GameManager.cook.move_offscreen()
+
 func _on_time_ran_out() -> void:
-	day_fail_phase()
+	# different triggers can come in at nearly the same time
+	if current_state != DayState.PASS:
+		day_fail_phase()
 
 func _on_all_orders_completed() -> void:
 	day_pass_phase()

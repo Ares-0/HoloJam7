@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://blma87368m17f"]
+[gd_scene load_steps=17 format=3 uid="uid://blma87368m17f"]
 
 [ext_resource type="Script" uid="uid://1grwospwaa7k" path="res://source/gui/game_ui.gd" id="1_0cyqu"]
 [ext_resource type="Texture2D" uid="uid://dwrbg425et6eg" path="res://assets/ui/UI_Sidebar.png" id="3_1j0tq"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://01vntb6c34hm" path="res://assets/ui/UI_Serving.png" id="6_v2kgr"]
 [ext_resource type="FontFile" uid="uid://bb7mjr65gyr7i" path="res://assets/fonts/04B_30__.TTF" id="7_v2kgr"]
 [ext_resource type="FontFile" uid="uid://b00a6crxmm10e" path="res://assets/fonts/Pix32.ttf" id="8_72gkx"]
+[ext_resource type="Texture2D" uid="uid://bvmx30geg4a86" path="res://assets/ui/UI_Clock_cropped.png" id="9_72gkx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cnw61"]
 font = ExtResource("7_v2kgr")
@@ -44,6 +45,12 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="LabelSettings" id="LabelSettings_0cyqu"]
 font = ExtResource("7_v2kgr")
 font_size = 38
+outline_size = 14
+outline_color = Color(0.8627451, 0.4392157, 0.27058825, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gmocp"]
+font = ExtResource("7_v2kgr")
+font_size = 60
 outline_size = 14
 outline_color = Color(0.8627451, 0.4392157, 0.27058825, 1)
 
@@ -259,3 +266,26 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "6/6"
 label_settings = SubResource("LabelSettings_0cyqu")
+
+[node name="DayFrame" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -371.0
+offset_bottom = 119.0
+grow_horizontal = 0
+texture = ExtResource("9_72gkx")
+
+[node name="CurrentDay" type="Label" parent="DayFrame"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Day 0"
+label_settings = SubResource("LabelSettings_gmocp")
+horizontal_alignment = 1
+vertical_alignment = 1

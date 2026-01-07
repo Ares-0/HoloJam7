@@ -28,7 +28,7 @@ var current_order_num: int = 0
 func _ready() -> void:
 	GameManager.order_machine = self
 
-func day_reset() -> void:
+func reset() -> void:
 	current_order_num = 0
 	current_state = OrderState.WAIT
 
@@ -87,6 +87,7 @@ func order_serve_phase() -> void:
 
 func end_on_fail() -> void:
 	# Cleanup work after timer ran out failure
+	# Not a full reset, keep order num etc
 	current_state = OrderState.WAIT
 
 func _on_serve_pressed() -> void:

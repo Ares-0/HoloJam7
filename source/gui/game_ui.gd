@@ -17,6 +17,7 @@ var total_orders: int = 0
 
 @onready var order_nums: Label = %OrderProgress
 @onready var order_name: Label = %OrderName
+@onready var day_num: Label = %CurrentDay
 
 # Clock works on its own
 
@@ -70,3 +71,6 @@ func set_total_orders(value: int) -> void:
 func update_current_order_num(value: int) -> void:
 	# todo: resize or something for double digit orders
 	order_nums.text = "%d/%d" % [value, total_orders]
+
+func set_current_day(value: int) -> void:
+	day_num.text = str("Day ", value)

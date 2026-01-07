@@ -13,10 +13,10 @@ script = ExtResource("1_8yjoi")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1611.0
-offset_top = 63.0
-offset_right = 1854.0
-offset_bottom = 138.0
+offset_left = 100.0
+offset_top = 947.0
+offset_right = 343.0
+offset_bottom = 1022.0
 text = "Serve / Start"
 
 [node name="DevFeedback" type="Label" parent="."]
