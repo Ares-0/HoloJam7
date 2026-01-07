@@ -30,9 +30,11 @@ volume_db = -4.0
 
 [node name="CardSelectA" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_ynbmr")
+max_polyphony = 3
 
 [node name="CardSelectB" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_ock7u")
+max_polyphony = 3
 
 [node name="CardShuffle" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_cmsfw")

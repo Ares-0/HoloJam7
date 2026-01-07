@@ -37,3 +37,8 @@ func stop(sound: NodePath):
 	var sound_node = get_node_or_null(sound)
 	assert(sound_node != null, str("Sound ", sound, " does not exist"))
 	sound_node.stop()
+
+func play_random_tap_sound() -> void:
+	var options: Array[String] = ["Sizzle", "Chop"]
+	options.shuffle()
+	play(options[0])

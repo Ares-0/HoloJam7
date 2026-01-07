@@ -125,6 +125,7 @@ func tap() -> void:
 
 	# Flourish / appply to recipe animation
 	# TODO: real animation / feedback
+	AudioManager.play_random_tap_sound()
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(self, "position", self.position + Vector2(0,-400), 0.1)
 	await tween.finished

@@ -100,6 +100,8 @@ func draw_card_to_hand() -> void:
 	var card: Card = draw_pile.draw_from()
 	if card != null:
 		hand.add_card(card)
+		await get_tree().create_timer(0.15).timeout
+		AudioManager.play("CardSelectB")
 
 func fill_hand() -> void:
 	# Check if players hand is full and if not draw cards from pile to add to it
