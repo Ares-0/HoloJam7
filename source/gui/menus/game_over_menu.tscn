@@ -1,0 +1,127 @@
+[gd_scene load_steps=8 format=3 uid="uid://cqdrk0nxmcy38"]
+
+[ext_resource type="Texture2D" uid="uid://bjhjuhahf0lpi" path="res://assets/ui/UI_Bottom.png" id="1_64pms"]
+[ext_resource type="Script" uid="uid://cnujwwe0go3jm" path="res://source/gui/menus/game_over_menu.gd" id="1_si2al"]
+[ext_resource type="Texture2D" uid="uid://bvmx30geg4a86" path="res://assets/ui/UI_Clock_cropped.png" id="2_aqkl6"]
+[ext_resource type="FontFile" uid="uid://bb7mjr65gyr7i" path="res://assets/fonts/04B_30__.TTF" id="3_si2al"]
+[ext_resource type="FontFile" uid="uid://b00a6crxmm10e" path="res://assets/fonts/Pix32.ttf" id="5_genlh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_aqkl6"]
+font = ExtResource("3_si2al")
+font_size = 72
+outline_size = 16
+outline_color = Color(0.8627451, 0.4392157, 0.27058825, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uwynh"]
+font = ExtResource("5_genlh")
+font_size = 48
+outline_size = 14
+outline_color = Color(0.8627451, 0.4392157, 0.27058825, 1)
+
+[node name="GameOverMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_si2al")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4627451)
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 430.0
+offset_top = 340.0
+offset_right = 470.0
+offset_bottom = 380.0
+
+[node name="UiBottom" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 404.0
+scale = Vector2(0.55, 1)
+texture = ExtResource("1_64pms")
+expand_mode = 2
+stretch_mode = 2
+flip_v = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/UiBottom"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/UiBottom/MarginContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Control/UiBottom/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="GameOver" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 1055.0
+offset_bottom = 194.0
+text = "Game Over"
+label_settings = SubResource("LabelSettings_aqkl6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Retry" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 200.0
+offset_right = 477.0
+offset_bottom = 319.0
+size_flags_horizontal = 2
+texture_normal = ExtResource("2_aqkl6")
+
+[node name="Label" type="Label" parent="Control/Retry"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "RETRY"
+label_settings = SubResource("LabelSettings_uwynh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenu" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 581.0
+offset_top = 200.0
+offset_right = 952.0
+offset_bottom = 319.0
+size_flags_horizontal = 3
+texture_normal = ExtResource("2_aqkl6")
+
+[node name="Label2" type="Label" parent="Control/MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAIN MENU"
+label_settings = SubResource("LabelSettings_uwynh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Control/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Control/MainMenu" to="." method="_on_main_menu_pressed"]

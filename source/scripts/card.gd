@@ -1,6 +1,7 @@
 class_name Card
 extends StaticBody2D
 
+@export var card_num: int
 @export var card_name: String
 @export var image_path: String
 @export var cost: int
@@ -29,16 +30,12 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-# func setup_from_data(name_c: String) -> void:
-# 	# Setup card info with given data
-# 	card_name = name_c
-# 	$NameLabel.text = card_name
-
 func setup_from_card_num(num: int) -> void:
 	# Look up the given card number in the cube and setup with that info
 	# Info todo: image
 	var info = CardCube.get_card_info(num)
 	
+	card_num = num
 	card_name = info["name"]
 	cost = int(info["cost"])
 
@@ -54,6 +51,9 @@ func get_taste_values() -> Dictionary:
 
 func get_cost() -> int:
 	return cost
+
+func get_num() -> int:
+	return card_num
 
 func update_face() -> void:
 	# pass all card info to the card ui
@@ -76,8 +76,10 @@ func focus_on() -> void:
 		self.transform = neutral_transform
 
 	# 1 frame transform
-	self.scale = Vector2(1.5, 1.5) # todo: const all these
-	self.position = self.position + Vector2(0,-50)
+	self.scale = Vector2(2.0, 2.0) # todo: const all these
+	# self.position = self.position + Vector2(0,-135) # -50
+	self.global_position = Vector2(self.global_position.x, 876)
+	self.rotation = 0.0
 	self.z_index = 99
 
 	# Error happens when parent is already discard but still trying to focus
@@ -106,6 +108,7 @@ func set_neutral_transform(transform_n: Transform2D, zidx: int) -> void:
 		return
 
 	self.neutral_transform = transform_n
+	self.neutral_transform = Transform2D(transform_n.get_rotation(), Vector2(1.5,1.5), 0, transform_n.get_origin())
 	self.neutral_z_idx = zidx
 
 	tween_t = get_tree().create_tween()

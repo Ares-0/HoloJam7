@@ -5,20 +5,25 @@ extends Node
 
 # Careful of scopes of stuff pulled out into state machines
 
-const MAX_CARDS_PER_HAND: int = 10
+const MAX_CARDS_PER_HAND: int = 5
 const REROLL_COST: int = 1
 
 # These are filled externally
 var draw_pile: Pile
 var discard_pile: Pile
 var hand: Hand
+
 var HUD: GameUI
 var debugHUD: DevHUD
-var order_machine: OrderStateMachine
-var day_machine: DayStateMachine
 var game_timer: GameTimer
-var order_gen: OrderGenerator
+var game_over_menu: GameOverMenu
+
+var cook: Customer
 var customer: Customer
+var order_gen: OrderGenerator
+
+var day_machine: DayStateMachine
+var order_machine: OrderStateMachine
 
 var dish_taste = {
 	"sweet": 0,
@@ -35,6 +40,7 @@ func _ready() -> void:
 	SignalBus.card_tapped.connect(_on_card_tapped)
 	SignalBus.pile_empty.connect(_on_pile_empty)
 	SignalBus.serve_pressed.connect(_on_serve_pressed)
+	SignalBus.restart_day.connect(_on_restart_day)
 
 	# dev: fill draw pile with dummy deck
 	await get_tree().process_frame
@@ -86,14 +92,15 @@ func eval_score() -> int:
 	print("Lost ", score, " points! Good enough! Keep going!")
 	return -score
 
-func dish_taste_reset() -> void:
-	# Resets BOTH the order and now serving tastes to 0s
+func reset_dish_hud() -> void:
+	# Resets order reqs, order name, and dish stats
 	dish_taste["sweet"] = 0
 	dish_taste["salty"] = 0
 	dish_taste["sour"] = 0
 	dish_taste["umami"] = 0
 	HUD.update_dish_stats(dish_taste)
 	HUD.update_order_reqs(dish_taste)
+	HUD.set_order_name("")
 
 func draw_card_to_hand() -> void:
 	# Move a single card from the draw pile to the hand
@@ -163,3 +170,9 @@ func _on_serve_pressed() -> void:
 		day_machine._on_serve_pressed()
 	elif day_machine.current_state == day_machine.DayState.ORDER:
 		order_machine._on_serve_pressed()
+
+func _on_restart_day() -> void:
+	print("retrying day")
+	order_machine.reset()
+	reset_dish_hud()
+	day_machine.day_setup_phase()

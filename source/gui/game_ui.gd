@@ -17,12 +17,15 @@ var total_orders: int = 0
 
 @onready var order_nums: Label = %OrderProgress
 @onready var order_name: Label = %OrderName
+@onready var day_num: Label = %CurrentDay
+@onready var fade_rect: ColorRect = %FadeRect
 
 # Clock works on its own
 
 func _ready() -> void:
 	pass
 	GameManager.HUD = self
+	fade_rect.modulate = Color.WHITE
 
 func update_order_reqs(taste_reqs: Dictionary) -> void:
 	var temp: int = taste_reqs["sweet"]
@@ -59,7 +62,10 @@ func update_dish_stats(taste_state: Dictionary) -> void:
 	dishD_label.visible = (temp != 0)
 
 func set_order_name(name_s: String) -> void:
-	order_name.text = str("1x ", name_s)
+	if name_s == "":
+		order_name.text = ""
+	else:
+		order_name.text = str("1x ", name_s)
 
 func set_total_orders(value: int) -> void:
 	total_orders = value
@@ -67,3 +73,14 @@ func set_total_orders(value: int) -> void:
 func update_current_order_num(value: int) -> void:
 	# todo: resize or something for double digit orders
 	order_nums.text = "%d/%d" % [value, total_orders]
+
+func set_current_day(value: int) -> void:
+	day_num.text = str("Day ", value)
+	
+func fade_in(duration: float) -> void:
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(fade_rect, "modulate", Color.TRANSPARENT, duration)
+
+func fade_out(duration: float) -> void:
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(fade_rect, "modulate", Color.WHITE, duration)

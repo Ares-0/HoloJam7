@@ -28,6 +28,10 @@ var current_order_num: int = 0
 func _ready() -> void:
 	GameManager.order_machine = self
 
+func reset() -> void:
+	current_order_num = 0
+	current_state = OrderState.WAIT
+
 func order_begin_phase() -> void:
 	# All the work done before a player can select cards
 	current_state = OrderState.BEGIN
@@ -67,7 +71,7 @@ func order_serve_phase() -> void:
 	var score: int = GameManager.eval_score()
 	# and do what with the score
 	GameManager.debugHUD.update_feedback_label(str("dish score: ", score))
-	GameManager.dish_taste_reset()
+	GameManager.reset_dish_hud()
 
 	# Fill hand with cards
 	GameManager.fill_hand()
@@ -80,6 +84,11 @@ func order_serve_phase() -> void:
 		# automatically return to begin phase
 		# I actually don't like the stack growing like this
 		order_begin_phase()
+
+func end_on_fail() -> void:
+	# Cleanup work after timer ran out failure
+	# Not a full reset, keep order num etc
+	current_state = OrderState.WAIT
 
 func _on_serve_pressed() -> void:
 	# Instead of directly looking at the button, waits for 

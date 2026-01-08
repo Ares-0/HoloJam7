@@ -1,0 +1,17 @@
+class_name GameOverMenu
+extends Control
+
+func _ready() -> void:
+	GameManager.game_over_menu = self
+
+func reveal() -> void:
+	# extra flair here later
+	self.show()
+
+func _on_retry_pressed() -> void:
+	self.hide()
+	SignalBus.restart_day.emit()
+
+func _on_main_menu_pressed() -> void:
+	self.hide()
+	get_tree().change_scene_to_file("res://source/gui/menus/title_screen.tscn")
