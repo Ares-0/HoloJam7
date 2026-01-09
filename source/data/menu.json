@@ -38,5 +38,85 @@
 			"sour": 1,
 			"umami": 1
 		}
+	},
+	"4": {
+		"image": "res://assets/food/Burger.png",
+		"name": "Burger",
+		"taste_reqs": {
+			"sweet": 0,
+			"salty": 2,
+			"sour": 0,
+			"umami": 2
+		}
+	},
+	"5": {
+		"image": "res://assets/food/Cake.png",
+		"name": "Cake",
+		"taste_reqs": {
+			"sweet": 3,
+			"salty": 0,
+			"sour": 0,
+			"umami": 0
+		}
+	},
+	"6": {
+		"image": "res://assets/food/Dango.png",
+		"name": "Dango",
+		"taste_reqs": {
+			"sweet": 1,
+			"salty": 0,
+			"sour": 1,
+			"umami": 0
+		}
+	},
+	"7": {
+		"image": "res://assets/food/Fried Rice.png",
+		"name": "Fried Rice",
+		"taste_reqs": {
+			"sweet": 0,
+			"salty": 1,
+			"sour": 1,
+			"umami": 1
+		}
+	},
+	"8": {
+		"image": "res://assets/food/Icecream.png",
+		"name": "Ice Cream",
+		"taste_reqs": {
+			"sweet": 0,
+			"salty": 1,
+			"sour": 1,
+			"umami": 1
+		}
+	},
+	"9": {
+		"image": "res://assets/food/Onigiri.png",
+		"name": "Onigiri",
+		"taste_reqs": {
+			"sweet": 0,
+			"salty": 1,
+			"sour": 2,
+			"umami": 0
+		}
+	},
+	"10": {
+		"image": "res://assets/food/Pizza.png",
+		"name": "Pizza",
+		"taste_reqs": {
+			"sweet": 1,
+			"salty": 0,
+			"sour": 0,
+			"umami": 2
+		}
+	},
+	"11": {
+		"image": "res://assets/food/Shrimp.png",
+		"name": "Shrimp",
+		"taste_reqs": {
+			"sweet": 0,
+			"salty": 1,
+			"sour": 1,
+			"umami": 1
+		}
 	}
 }

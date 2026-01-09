@@ -71,6 +71,9 @@ func get_new_order(order_num: int) -> void:
 	HUD.update_dish_stats(dish_taste)
 	HUD.update_current_order_num(order_num)
 
+	# super awkward here
+	customer.say_order(current_order)
+
 func add_values_to_dish(tastes: Dictionary) -> void:
 	dish_taste["sweet"] = dish_taste["sweet"] + tastes["sweet"]
 	dish_taste["salty"] = dish_taste["salty"] + tastes["salty"]
