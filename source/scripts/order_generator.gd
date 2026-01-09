@@ -40,8 +40,8 @@ func get_single_order() -> Order:
 
 	# streak protection
 	var r = randi_range(4,menu_size-1)
-	while r == last_order:
-		randi_range(4,menu_size-1)
+	while r == last_order: # maybe dont do this
+		r = randi_range(4,menu_size-1)
 	last_order = r
 	# r = 0 # debug force
 
