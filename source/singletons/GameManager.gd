@@ -19,6 +19,7 @@ var game_timer: GameTimer
 var game_over_menu: GameOverMenu 
 var card_select_menu : CardSelectMenu
 
+var plate: OrderPlate
 var cook: Customer
 var customer: Customer
 var order_gen: OrderGenerator
@@ -43,10 +44,13 @@ func _ready() -> void:
 	SignalBus.serve_pressed.connect(_on_serve_pressed)
 	SignalBus.restart_day.connect(_on_restart_day)
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("debug_0"):
+		fill_hand()
+
+func game_start() -> void:
+	#await get_tree().process_frame
 	# dev: fill draw pile with dummy deck
-	await get_tree().process_frame
-	if draw_pile == null:
-		return
 	var card_scene = preload("res://source/scenes/card.tscn")
 	for x in range(0,20):
 		var card = card_scene.instantiate()
@@ -56,10 +60,6 @@ func _ready() -> void:
 
 	await get_tree().create_timer(0.5).timeout # ?
 	day_machine.day_setup_phase()
-
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("debug_0"):
-		fill_hand()
 
 func set_total_order_num(value: int) -> void:
 	total_orders = value
@@ -71,6 +71,12 @@ func get_new_order(order_num: int) -> void:
 	HUD.set_order_name(current_order.recipe_name)
 	HUD.update_dish_stats(dish_taste)
 	HUD.update_current_order_num(order_num)
+
+	# super awkward here
+	customer.say_order(current_order)
+	plate.set_food(current_order)
+	await get_tree().create_timer(0.1).timeout
+	plate.move_onscreen()
 
 func add_values_to_dish(tastes: Dictionary) -> void:
 	dish_taste["sweet"] = dish_taste["sweet"] + tastes["sweet"]

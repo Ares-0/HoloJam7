@@ -40,11 +40,11 @@ func order_begin_phase() -> void:
 	if current_order_num == 0:
 		current_order_num = current_order_num + 1
 
-	# Tell customer window what customer to display
-	# customer_window.show_customer(daily_orders.customer_name)
+	# Show customer and order
 	GameManager.customer.move_onscreen()
 	await SignalBus.customer_done_moving
 
+	await get_tree().create_timer(0.4).timeout
 	GameManager.get_new_order(current_order_num)
 
 	# Fill hand with cards (backup)
@@ -62,6 +62,7 @@ func order_serve_phase() -> void:
 	current_state = OrderState.SERVE
 
 	# Take order away
+	GameManager.plate.move_offscreen(1.0)
 
 	# Hide customer
 	GameManager.customer.move_offscreen()

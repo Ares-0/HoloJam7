@@ -1,11 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://dm76iwe5uaqsx"]
+[gd_scene load_steps=5 format=3 uid="uid://dm76iwe5uaqsx"]
 
 [ext_resource type="Script" uid="uid://bsiod0rh65nx7" path="res://source/scripts/customer.gd" id="1_5a381"]
 [ext_resource type="Texture2D" uid="uid://bvyk3em6plh3f" path="res://assets/characters/Fan1.png" id="2_qpcdv"]
+[ext_resource type="Texture2D" uid="uid://c6uuo1l1yuln1" path="res://assets/characters/SpeechBubble.png" id="3_2tjmj"]
+[ext_resource type="Texture2D" uid="uid://c3ilihcn5fbkp" path="res://assets/food/Burger.png" id="4_qvlsa"]
 
 [node name="customer" type="Node2D"]
 script = ExtResource("1_5a381")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Character" type="Sprite2D" parent="."]
 scale = Vector2(0.875, 0.875)
 texture = ExtResource("2_qpcdv")
+
+[node name="Bubble" type="Sprite2D" parent="."]
+position = Vector2(-328, -261)
+scale = Vector2(-1, 1)
+texture = ExtResource("3_2tjmj")
+
+[node name="Food" type="Sprite2D" parent="Bubble"]
+unique_name_in_owner = true
+position = Vector2(-3, -21)
+scale = Vector2(-1, 1)
+texture = ExtResource("4_qvlsa")

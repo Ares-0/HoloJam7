@@ -43,7 +43,7 @@ func day_setup_phase() -> void:
 	GameManager.set_total_order_num(total_orders)
 	GameManager.HUD.update_current_order_num(0)
 
-	GameManager.order_gen.set_difficulty(current_day)
+	GameManager.order_gen.set_difficulty(current_day+2)
 
 	GameManager.game_timer.setup(time_in_day)
 
@@ -81,16 +81,14 @@ func day_fail_phase() -> void:
 	# Freeze input
 	GameManager.order_machine.end_on_fail()
 
-	# Take order away
-
 	# hide customer
 	GameManager.customer.move_offscreen()
 
 	# Reset to start of day
-	# delay?
 	GameManager.game_over_menu.reveal()
 
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(1.0).timeout
+	GameManager.plate.move_offscreen(-1.0)
 	GameManager.cook.move_offscreen()
 
 func _on_time_ran_out() -> void:
