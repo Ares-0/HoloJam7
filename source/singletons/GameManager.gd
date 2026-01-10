@@ -36,7 +36,6 @@ var dish_taste = {
 }
 var current_order: Order
 var total_orders: int 
-var deck : Array[int]
 
 func _ready() -> void:
 	SignalBus.discard.connect(_on_discard)
@@ -45,8 +44,6 @@ func _ready() -> void:
 	SignalBus.pile_empty.connect(_on_pile_empty)
 	SignalBus.serve_pressed.connect(_on_serve_pressed)
 	SignalBus.restart_day.connect(_on_restart_day) 
-	deck = Global.deck
-	deck.shuffle()
 
 func _process(delta: float) -> void:
 	pass
@@ -58,7 +55,9 @@ func game_start() -> void:
 	AudioManager.soundtrack_start()
 
 	# dev: fill draw pile with dummy deck
-	var card_scene = preload("res://source/scenes/card.tscn")
+	var card_scene = preload("res://source/scenes/card.tscn") 
+	var deck = Global.deck
+	deck.shuffle()
 	for x in range(0,len(deck)):
 		var card = card_scene.instantiate()
 		add_child(card)
