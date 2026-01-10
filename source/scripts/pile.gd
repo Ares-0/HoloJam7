@@ -19,12 +19,14 @@ func size() -> int:
 func add_card(card: Card) -> void:
 	# This method is for adding cards to the pile under the hood,
 	# During initial setup or reshuffling
-	# The card is not in the tree or visible to the player
+	# The card is not visible to the player
+	card.reparent(self)
 	cards.push_back(card)
 	update_count()
 
 func add_cards(pile: Array[Card]) -> void:
 	for card in pile:
+		assert(card.get_parent() != null)
 		card.reparent(self)
 		cards.push_back(card)
 	update_count()
@@ -33,7 +35,9 @@ func remove_all_cards() -> Array[Card]:
 	# pop everything, usually to empty this or move cards to another pile
 	var last: Array[Card] = []
 	while cards.size() > 0:
-		last.append(cards.pop_back())
+		var back: Card = cards.pop_back()
+		self.remove_child(back)
+		last.append(back)
 	update_count()
 	return last
 
@@ -73,9 +77,8 @@ func draw_from() -> Card:
 func shuffle() -> void:
 	# There's a really 
 	cards.shuffle()
-	
+
 	# This animation has 0 to do with the players ability to draw from the pile
-	# TODO: play sound
 	$CardBack.rotation = PI
 	$CardBack2.rotation = -PI
 	$CardBack3.rotation = 0
@@ -87,6 +90,12 @@ func shuffle() -> void:
 	tween1.tween_property($CardBack, "rotation", 0, 0.3)
 	tween2.tween_property($CardBack2, "rotation", 0, 0.3)
 	tween3.tween_property($CardBack3, "rotation", PI, 0.3)
+
+	# Audio stuff
+	await get_tree().create_timer(0.15).timeout
+	AudioManager.play("CardShuffle")
+	await get_tree().create_timer(0.67).timeout
+	AudioManager.stop("CardShuffle")
 
 func set_card_backs_visible(value: bool) -> void:
 	$CardBack.visible = value

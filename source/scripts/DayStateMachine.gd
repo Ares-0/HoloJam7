@@ -46,11 +46,13 @@ func day_setup_phase() -> void:
 	GameManager.order_gen.set_difficulty(current_day+2)
 
 	GameManager.game_timer.setup(time_in_day)
+	GameManager.prepare_draw_pile()
 
 	# Visual setup
 	GameManager.HUD.fade_in(1.0)
 	await get_tree().create_timer(0.25).timeout
 	GameManager.cook.move_onscreen()
+	GameManager.draw_pile.shuffle()
 	await get_tree().create_timer(1.0).timeout
 	GameManager.fill_hand()
 
@@ -93,6 +95,9 @@ func day_fail_phase() -> void:
 	await get_tree().create_timer(1.0).timeout
 	GameManager.plate.move_offscreen(-1.0)
 	GameManager.cook.move_offscreen()
+	
+	# might be a better place for it somewhere
+	GameManager.empty_piles_and_hand()
 
 func _on_time_ran_out() -> void:
 	# different triggers can come in at nearly the same time

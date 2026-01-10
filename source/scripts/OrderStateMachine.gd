@@ -85,8 +85,8 @@ func order_serve_phase() -> void:
 	GameManager.fill_hand()
 
 	if current_order_num == GameManager.total_orders:
-		SignalBus.all_orders_completed.emit()
 		current_state = OrderState.WAIT
+		SignalBus.all_orders_completed.emit()
 	else:
 		current_order_num = current_order_num + 1
 		# automatically return to begin phase

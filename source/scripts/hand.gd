@@ -44,6 +44,12 @@ func take_card(card: Card) -> bool:
 	arrange_cards()
 	return true
 
+func drop_all_cards() -> Array[Card]:
+	var last: Array[Card] = []
+	while held_cards.size() > 0:
+		last.append(held_cards.pop_back())
+	return last
+
 func set_hand_focus(card: Card) -> void:
 	# focus on new given card and release focus from previous
 	# when this is called, the hovered card already did its focus actions

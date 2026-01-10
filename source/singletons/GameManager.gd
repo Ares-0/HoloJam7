@@ -54,15 +54,7 @@ func game_start() -> void:
 	AudioManager.set_soundtrack("BgmMain")
 	AudioManager.soundtrack_start()
 
-	# dev: fill draw pile with dummy deck
-	var card_scene = preload("res://source/scenes/card.tscn") 
-	var deck = Global.deck
-	deck.shuffle()
-	for x in range(0,len(deck)):
-		var card = card_scene.instantiate()
-		add_child(card)
-		card.setup_from_card_num(deck[x])
-		draw_pile.add_card(card)
+	# prepare_draw_pile() # moved to day_setup_phase
 
 	await get_tree().create_timer(0.5).timeout # ?
 	day_machine.day_setup_phase()
@@ -123,6 +115,20 @@ func draw_card_to_hand() -> void:
 		await get_tree().create_timer(0.15).timeout
 		AudioManager.play("CardSelectB")
 
+func prepare_draw_pile() -> void:
+	# Setting up the draw pile always pulls from the deck object
+	# So there is less risk of desync across days and stuff
+	if draw_pile.size() > 0:
+		push_error("Preparing a non empty draw pile")
+	
+	var card_scene = preload("res://source/scenes/card.tscn")
+	var deck = Global.deck
+	for item in deck:
+		var card: Card = card_scene.instantiate()
+		add_child(card)
+		card.setup_from_card_num(item)
+		draw_pile.add_card(card)
+
 func fill_hand() -> void:
 	# Check if players hand is full and if not draw cards from pile to add to it
 	# Player should not have to automatically draw ever
@@ -139,6 +145,14 @@ func can_play_card() -> bool:
 		return false
 	return true
 
+func empty_piles_and_hand() -> void:
+	# drop all cards from draw pile, discard pile, and hand
+	var cards_to_free = []
+	cards_to_free.append_array(discard_pile.remove_all_cards())
+	cards_to_free.append_array(draw_pile.remove_all_cards())
+	cards_to_free.append_array(hand.drop_all_cards())
+	for card in cards_to_free:
+		card.queue_free()
 
 func _on_discard(card: Card) -> void:
 	hand.take_card(card)
@@ -160,22 +174,17 @@ func _on_card_tapped(card: Card) -> void:
 	draw_card_to_hand()
 
 func _on_pile_empty(pile: Pile) -> void:
-	# If there's very few cards so both packs are empty, it can cause some soft locks
 	if pile == draw_pile:
 		# If nothing in discard, can't do any work
-		# also thats an error state
 		if discard_pile.size() == 0:
-			push_warning("Draw and discard piles both ran out")
+			# If this happens during the select phase, thats and error and a softlock
+			if order_machine.current_state == order_machine.OrderState.SELECT:
+				push_warning("Draw and discard piles both ran out")
 			return
 		var pack = discard_pile.remove_all_cards()
-		draw_pile.add_cards(pack)
-		draw_pile.shuffle()
-
-		# Audio stuff
-		await get_tree().create_timer(0.15).timeout
-		AudioManager.play("CardShuffle")
-		await get_tree().create_timer(0.67).timeout
-		AudioManager.stop("CardShuffle")
+		if pack.size() > 0:
+			draw_pile.add_cards(pack)
+			draw_pile.shuffle()
 
 func _on_serve_pressed() -> void:
 	# redirect the signal to one of the two state machines, as need be
