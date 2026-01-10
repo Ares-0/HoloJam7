@@ -14,12 +14,16 @@ script = ExtResource("1_6qaqn")
 
 [node name="CheckBox" type="CheckBox" parent="."]
 layout_mode = 0
-offset_right = 24.0
-offset_bottom = 24.0
+offset_left = -128.00002
+offset_top = -116.99999
+offset_right = -103.000015
+offset_bottom = -85.99999
+scale = Vector2(2.5, 2.5)
 
 [node name="CardImage" parent="." instance=ExtResource("2_6qaqn")]
 layout_mode = 1
-offset_left = 53.0
-offset_top = -51.0
-offset_right = 53.0
-offset_bottom = -51.0
+offset_left = -66.0
+offset_top = -99.0
+offset_right = -1016.0
+offset_bottom = -587.0
+card_num = -1
