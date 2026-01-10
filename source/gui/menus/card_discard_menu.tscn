@@ -101,13 +101,14 @@ vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control"]
 layout_mode = 0
-offset_left = 238.0
+offset_left = 86.0
 offset_top = 218.0
-offset_right = 1220.0
+offset_right = 1364.0
 offset_bottom = 511.0
 
 [node name="Deck Grid" type="GridContainer" parent="Control/ScrollContainer"]
 layout_mode = 2
+size_flags_vertical = 0
 columns = 4
 
 [connection signal="pressed" from="Control/Next" to="." method="on_next_pressed"]

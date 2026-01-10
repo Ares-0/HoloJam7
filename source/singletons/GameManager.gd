@@ -198,5 +198,5 @@ func begin_card_selection():
 	card_discard_menu.update_grid()
 	card_discard_menu.show() 
 
-func continue_card_slection():
+func continue_card_selection():
 	card_select_menu.show()

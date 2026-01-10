@@ -1,21 +1,25 @@
 class_name CardDiscardMenu
 extends Control 
 
-@onready var deck_grid = $"ScrollContainer/Deck Grid" 
+@onready var deck_grid = $"Control/ScrollContainer/Deck Grid"
 
 var card_option = preload("res://source/gui/card_option.tscn") 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GameManager.card_discard_menu = self
+	GameManager.card_discard_menu = self 
+	update_grid()
 
 func update_grid(): 
-	clear_children(deck_grid) 
-	for x in range(0, len(Global.deck)):
-		var card = card_option.instantiate() 
-		deck_grid.add_child(card)
-		card.deck_idx = x 
-		card.card_img.setup_from_card_num(Global.deck[x])
+	if (deck_grid.get_child_count() > 0):
+		clear_children(deck_grid) 
+		for x in range(0, len(Global.deck)):
+			var card = card_option.instantiate() 
+			deck_grid.add_child(card)
+			card.deck_idx = x 
+			card.card_img.setup_from_card_num(Global.deck[x]) 
+	else: 
+		return
 
 func clear_children(node):
 	if (node.get_child_count() > 0):
@@ -41,4 +45,4 @@ func on_next_pressed():
 	remove_selection() 
 	Global.save_data()
 	self.hide()
-	GameManager.continue_card_slection()
+	GameManager.continue_card_selection()
