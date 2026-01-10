@@ -27,6 +27,7 @@ var neutral_z_idx: int
 
 @onready var image_generic: Sprite2D = %image_generic
 @onready var image_special: Sprite2D = %image_special
+@onready var image_food: Sprite2D = %image_food
 
 func _ready() -> void:
 	pass
@@ -38,11 +39,12 @@ func setup_from_card_num(num: int) -> void:
 	# Look up the given card number in the cube and setup with that info
 	# Info todo: image
 	var info = CardCube.get_card_info(num)
-	
+
 	card_num = num
 	card_name = info["name"]
 	cost = int(info["cost"])
 	special = info["special"]
+	image_path = info["image"]
 
 	tasteDict["sweet"] = int(info["taste_profile"]["sweet"])
 	tasteDict["salty"] = int(info["taste_profile"]["salty"])
@@ -69,6 +71,7 @@ func update_face() -> void:
 	$Control/StatD.text = str(tasteDict["umami"])
 	$Cost.text = str(cost)
 
+	image_food.texture = load(image_path)
 	image_generic.visible = not special
 	image_special.visible = special
 
@@ -82,8 +85,6 @@ func update_face() -> void:
 	if tasteDict["umami"] > 0:
 		verbose_str = verbose_str + str(tasteDict["umami"]) + "x umami\n" 
 	$Control/Verbose.text = verbose_str
-	
-	
 
 func focus_on() -> void:
 	# transform the card so it's easier to read
