@@ -7,8 +7,14 @@ extends Control
 func _ready() -> void:
 	newgame_B.grab_focus()
 	$BlackScreen.visible = false
+
 	# How-to overlay
+
 	# Audio setup
+	AudioManager.set_soundtrack("BgmMenu")
+	await get_tree().create_timer(0.5).timeout
+	AudioManager.soundtrack_start()
+
 	# Game state stuff
 	pass
 
@@ -17,6 +23,7 @@ func _ready() -> void:
 func _on_new_pressed() -> void:
 	pass
 	#get_tree().change_scene_to_file("res://source/scenes/game.tscn")
+	AudioManager.soundtrack_fade_out()
 	get_tree().change_scene_to_file("res://source/settings/dev_room_1.tscn")
 
 func _on_continue_pressed() -> void:

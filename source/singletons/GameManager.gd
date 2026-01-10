@@ -49,11 +49,14 @@ func _ready() -> void:
 	deck.shuffle()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("debug_0"):
-		fill_hand()
+	pass
 
 func game_start() -> void:
 	#await get_tree().process_frame
+
+	AudioManager.set_soundtrack("BgmMain")
+	AudioManager.soundtrack_start()
+
 	# dev: fill draw pile with dummy deck
 	var card_scene = preload("res://source/scenes/card.tscn")
 	for x in range(0,len(deck)):

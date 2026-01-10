@@ -31,7 +31,10 @@ func decrement_time(value_s: float) -> void:
 	update_face()
 	if time_left_s <= 0.0:
 		running = false
+		AudioManager.try_start("KitchenTimerBeep")
 		SignalBus.time_ran_out.emit()
+	if time_left_s <= 10.58:
+		AudioManager.try_start("TimerTicking")
 
 func update_face() -> void:
 	var temp: int = round(time_left_s)

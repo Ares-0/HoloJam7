@@ -61,6 +61,13 @@ func order_serve_phase() -> void:
 	# Phase to complete the order and finish the loop
 	current_state = OrderState.SERVE
 
+	if current_order_num == GameManager.total_orders:
+		AudioManager.play("BellDone")
+		await get_tree().create_timer(0.1).timeout
+		AudioManager.play("BellDone")
+		await get_tree().create_timer(0.1).timeout
+		AudioManager.play("BellDone")
+
 	# Take order away
 	GameManager.plate.move_offscreen(1.0)
 
@@ -76,7 +83,7 @@ func order_serve_phase() -> void:
 
 	# Fill hand with cards
 	GameManager.fill_hand()
-	
+
 	if current_order_num == GameManager.total_orders:
 		SignalBus.all_orders_completed.emit()
 		current_state = OrderState.WAIT
