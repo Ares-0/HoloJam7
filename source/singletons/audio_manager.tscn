@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c10aen1wj72w4"]
+[gd_scene load_steps=19 format=3 uid="uid://c10aen1wj72w4"]
 
 [ext_resource type="Script" uid="uid://b2nfjsoh8rop0" path="res://source/singletons/audio_manager.gd" id="1_b15hf"]
 [ext_resource type="AudioStream" uid="uid://erhdltfpxi2r" path="res://assets/sfx/blip.wav" id="2_iuqny"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://cyyh0taaqs86d" path="res://assets/sfx/ui_hover_b.wav" id="13_2ymn8"]
 [ext_resource type="AudioStream" uid="uid://bkohawblgl55" path="res://assets/sfx/ui_hover_c.wav" id="14_a5uqk"]
 [ext_resource type="AudioStream" uid="uid://dbcec862yflrh" path="res://assets/sfx/ui_select_a.wav" id="15_acctt"]
+[ext_resource type="AudioStream" uid="uid://c0vkwmr482vgc" path="res://assets/ost.mp3" id="18_cmsfw"]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource("1_b15hf")
@@ -79,3 +80,9 @@ stream = ExtResource("14_a5uqk")
 
 [node name="UISelectA" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_acctt")
+
+[node name="Music1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_cmsfw")
+volume_db = -15.0
+bus = &"Music"
+parameters/looping = true
