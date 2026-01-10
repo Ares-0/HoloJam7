@@ -28,10 +28,10 @@ color = Color(0.07005155, 0.066660166, 0.066660166, 0.5882353)
 
 [node name="Confirm" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 106.0
-offset_top = 200.0
-offset_right = 477.0
-offset_bottom = 319.0
+offset_left = 307.0
+offset_top = 354.0
+offset_right = 678.0
+offset_bottom = 473.0
 size_flags_horizontal = 2
 texture_normal = ExtResource("2_qgceg")
 
@@ -56,7 +56,7 @@ offset_bottom = 40.0
 [node name="Card Choices" type="GridContainer" parent="ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-columns = 5
+columns = 4
 
 [node name="CardOption" parent="ScrollContainer/Card Choices" instance=ExtResource("4_qgceg")]
 layout_mode = 2

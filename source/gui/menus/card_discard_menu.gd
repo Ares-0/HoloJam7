@@ -19,14 +19,14 @@ func update_grid():
 
 func clear_children(node):
 	if (node.get_child_count() > 0):
-		for c in node.get_children():
-			c.queue_free()
+		for c in range(node.get_child_count() - 1, -1, -1):
+			node.get_child(c).queue_free()
 	else: 
 		return
 
 func remove_selection():
 	for x in range(0, deck_grid.get_child_count()):
-		if (deck_grid.get_child(x).checked):
+		if (deck_grid.get_child(x).checked()):
 			Global.deck[deck_grid.get_child(x).deck_idx] = -44
 	Global.deck = Global.deck.filter(is_positive)
 

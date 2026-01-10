@@ -1,8 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://8vu4176fg1b6"]
+[gd_scene load_steps=8 format=3 uid="uid://8vu4176fg1b6"]
 
 [ext_resource type="Script" uid="uid://i3uuedyhswqs" path="res://source/gui/menus/card_discard_menu.gd" id="1_jytat"]
+[ext_resource type="Texture2D" uid="uid://bjhjuhahf0lpi" path="res://assets/ui/UI_Bottom.png" id="2_psedw"]
 [ext_resource type="Texture2D" uid="uid://bvmx30geg4a86" path="res://assets/ui/UI_Clock_cropped.png" id="2_qra3p"]
+[ext_resource type="FontFile" uid="uid://bb7mjr65gyr7i" path="res://assets/fonts/04B_30__.TTF" id="3_jliu2"]
 [ext_resource type="FontFile" uid="uid://b00a6crxmm10e" path="res://assets/fonts/Pix32.ttf" id="3_xqiqj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ijek"]
+font = ExtResource("3_jliu2")
+font_size = 72
+outline_size = 16
+outline_color = Color(0.8627451, 0.4392157, 0.27058825, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_psedw"]
 font = ExtResource("3_xqiqj")
@@ -15,35 +23,70 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 785.0
+offset_bottom = 434.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jytat")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 576.0
-offset_bottom = 293.0
+offset_right = 1871.0
+offset_bottom = 1154.0
 color = Color(0, 0, 0, 0.5882353)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-layout_mode = 0
-offset_right = 577.0
-offset_bottom = 293.0
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 176.0
+offset_top = 207.0
+offset_right = 216.0
+offset_bottom = 247.0
 
-[node name="Deck Grid" type="GridContainer" parent="ScrollContainer"]
+[node name="UiBottom" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 404.0
+scale = Vector2(0.7499994, 1.969533)
+texture = ExtResource("2_psedw")
+expand_mode = 2
+stretch_mode = 2
+flip_v = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/UiBottom"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/UiBottom/MarginContainer"]
 layout_mode = 2
-columns = 5
 
-[node name="Next" type="TextureButton" parent="."]
+[node name="Control" type="Control" parent="Control/UiBottom/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="Remove Label" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 106.0
-offset_top = 329.0
-offset_right = 477.0
-offset_bottom = 448.0
+offset_left = 5.0
+offset_right = 1443.0
+offset_bottom = 194.0
+text = "Remove a card?"
+label_settings = SubResource("LabelSettings_8ijek")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Next" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 506.0
+offset_top = 574.0
+offset_right = 877.0
+offset_bottom = 693.0
 size_flags_horizontal = 2
 texture_normal = ExtResource("2_qra3p")
 
-[node name="Label" type="Label" parent="Next"]
+[node name="Label" type="Label" parent="Control/Next"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,4 +99,15 @@ label_settings = SubResource("LabelSettings_psedw")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="Next" to="." method="on_next_pressed"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
+layout_mode = 0
+offset_left = 238.0
+offset_top = 218.0
+offset_right = 1220.0
+offset_bottom = 511.0
+
+[node name="Deck Grid" type="GridContainer" parent="Control/ScrollContainer"]
+layout_mode = 2
+columns = 4
+
+[connection signal="pressed" from="Control/Next" to="." method="on_next_pressed"]
