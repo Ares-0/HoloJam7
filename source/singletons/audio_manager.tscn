@@ -25,17 +25,17 @@ script = ExtResource("1_b15hf")
 
 [node name="BellDone" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_dswmj")
-volume_db = -10.0
+volume_db = -7.0
 bus = &"SFX"
 
 [node name="BellDoneMid" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_ock7u")
-volume_db = -10.0
+volume_db = -7.0
 bus = &"SFX"
 
 [node name="BellDoneShort" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_cmsfw")
-volume_db = -10.0
+volume_db = -7.0
 bus = &"SFX"
 
 [node name="CardDiscard" type="AudioStreamPlayer2D" parent="."]
@@ -55,6 +55,7 @@ stream = ExtResource("6_cmsfw")
 
 [node name="Chop" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_2f4op")
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="KitchenTimerBeep" type="AudioStreamPlayer2D" parent="."]
@@ -63,6 +64,7 @@ volume_db = -7.0
 
 [node name="Sizzle" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_4im8v")
+volume_db = 3.0
 
 [node name="TestBeep" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_iuqny")
@@ -74,27 +76,27 @@ volume_db = -15.0
 
 [node name="UIHoverA" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_6bjuc")
-volume_db = -5.0
+volume_db = 5.0
 
 [node name="UIHoverB" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_2ymn8")
-volume_db = -5.0
+volume_db = 5.0
 
 [node name="UIHoverC" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_a5uqk")
-volume_db = -5.0
+volume_db = 5.0
 
 [node name="UISelectA" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_acctt")
+volume_db = 5.0
 
 [node name="BgmMain" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("18_cmsfw")
-volume_db = -15.0
+volume_db = -5.0
 bus = &"Music"
 parameters/looping = true
 
 [node name="BgmMenu" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("19_v2d5w")
-volume_db = -15.0
 bus = &"Music"
 parameters/looping = true
