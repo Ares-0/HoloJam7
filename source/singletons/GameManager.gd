@@ -120,7 +120,7 @@ func prepare_draw_pile() -> void:
 	# So there is less risk of desync across days and stuff
 	if draw_pile.size() > 0:
 		push_error("Preparing a non empty draw pile")
-	
+
 	var card_scene = preload("res://source/scenes/card.tscn")
 	var deck = Global.deck
 	for item in deck:

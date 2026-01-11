@@ -70,9 +70,8 @@ layout_mode = 2
 
 [node name="Add Label" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 5.0
-offset_right = 1443.0
-offset_bottom = 194.0
+offset_right = 1440.0
+offset_bottom = 142.0
 text = "Pick 3 cards"
 label_settings = SubResource("LabelSettings_e008f")
 horizontal_alignment = 1
@@ -80,7 +79,7 @@ vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control"]
 layout_mode = 0
-offset_left = 74.0
+offset_left = 138.0
 offset_top = 122.0
 offset_right = 1313.0
 offset_bottom = 628.0
@@ -110,6 +109,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Confirm" type="TextureButton" parent="Control"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 545.0
 offset_top = 645.0

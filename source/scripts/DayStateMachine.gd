@@ -74,9 +74,10 @@ func day_pass_phase() -> void:
 	GameManager.begin_card_selection()
 
 	# remove after card select works
-	#GameManager.HUD.fade_out(1.0)
-	#await get_tree().create_timer(2.0).timeout
-	#day_setup_phase()
+	# GameManager.HUD.fade_out(1.0)
+	# await get_tree().create_timer(2.0).timeout
+	# GameManager.empty_piles_and_hand()
+	# day_setup_phase()
 
 func day_fail_phase() -> void:
 	# This interrupts the order state machine so need to do some of that work
@@ -114,4 +115,5 @@ func _on_serve_pressed() -> void:
 func on_card_selection_confirmed(): 
 	GameManager.HUD.fade_out(1.0)
 	await get_tree().create_timer(2.0).timeout
+	GameManager.empty_piles_and_hand()
 	day_setup_phase()
