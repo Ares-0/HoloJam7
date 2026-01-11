@@ -1,15 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://8vu4176fg1b6"]
+[gd_scene load_steps=10 format=3 uid="uid://8vu4176fg1b6"]
 
 [ext_resource type="Script" uid="uid://i3uuedyhswqs" path="res://source/gui/menus/card_discard_menu.gd" id="1_jytat"]
 [ext_resource type="Texture2D" uid="uid://bjhjuhahf0lpi" path="res://assets/ui/UI_Bottom.png" id="2_psedw"]
 [ext_resource type="Texture2D" uid="uid://bvmx30geg4a86" path="res://assets/ui/UI_Clock_cropped.png" id="2_qra3p"]
 [ext_resource type="FontFile" uid="uid://bb7mjr65gyr7i" path="res://assets/fonts/04B_30__.TTF" id="3_jliu2"]
 [ext_resource type="FontFile" uid="uid://b00a6crxmm10e" path="res://assets/fonts/Pix32.ttf" id="3_xqiqj"]
+[ext_resource type="PackedScene" uid="uid://bgwbbuj7c411i" path="res://source/gui/card_option.tscn" id="6_jliu2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8ijek"]
 font = ExtResource("3_jliu2")
 font_size = 72
 outline_size = 16
+outline_color = Color(0.8627451, 0.4392157, 0.27058825, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jliu2"]
+font = ExtResource("3_xqiqj")
+font_size = 37
+outline_size = 8
 outline_color = Color(0.8627451, 0.4392157, 0.27058825, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_psedw"]
@@ -71,9 +78,21 @@ layout_mode = 2
 layout_mode = 0
 offset_left = 5.0
 offset_right = 1443.0
-offset_bottom = 194.0
+offset_bottom = 153.0
 text = "Remove a card?"
 label_settings = SubResource("LabelSettings_8ijek")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubHeader" type="Label" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 103.0
+offset_right = 1442.0
+offset_bottom = 176.0
+text = "Select up to N cards to remove"
+label_settings = SubResource("LabelSettings_jliu2")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -109,9 +128,33 @@ offset_bottom = 595.0
 [node name="Deck Grid" type="GridContainer" parent="Control/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
-size_flags_vertical = 6
-theme_override_constants/h_separation = 175
-theme_override_constants/v_separation = 250
-columns = 3
+size_flags_vertical = 4
+theme_override_constants/h_separation = 45
+theme_override_constants/v_separation = 15
+columns = 5
+
+[node name="CardOption" parent="Control/ScrollContainer/Deck Grid" instance=ExtResource("6_jliu2")]
+layout_mode = 2
+
+[node name="CardOption2" parent="Control/ScrollContainer/Deck Grid" instance=ExtResource("6_jliu2")]
+layout_mode = 2
+
+[node name="CardOption3" parent="Control/ScrollContainer/Deck Grid" instance=ExtResource("6_jliu2")]
+layout_mode = 2
+
+[node name="CardOption4" parent="Control/ScrollContainer/Deck Grid" instance=ExtResource("6_jliu2")]
+layout_mode = 2
+
+[node name="CardOption5" parent="Control/ScrollContainer/Deck Grid" instance=ExtResource("6_jliu2")]
+layout_mode = 2
+
+[node name="CardOption6" parent="Control/ScrollContainer/Deck Grid" instance=ExtResource("6_jliu2")]
+layout_mode = 2
+
+[node name="CardOption7" parent="Control/ScrollContainer/Deck Grid" instance=ExtResource("6_jliu2")]
+layout_mode = 2
+
+[node name="CardOption8" parent="Control/ScrollContainer/Deck Grid" instance=ExtResource("6_jliu2")]
+layout_mode = 2
 
 [connection signal="pressed" from="Control/Next" to="." method="on_next_pressed"]

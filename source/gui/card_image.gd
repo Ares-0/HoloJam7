@@ -17,7 +17,10 @@ func _ready() -> void:
 		setup_from_card_num(card_num)
 
 func set_count(value: int) -> void:
-	$Count.text = str("x", value)
+	if value < 0:
+		$Count.text = ""
+	else:
+		$Count.text = str("x", value)
 
 #func set_card_num(num: int) -> void:
 	## Store the card num now and act on it later

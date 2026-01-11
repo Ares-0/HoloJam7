@@ -25,5 +25,6 @@ func toggle_rect():
 		rect.show()
 
 func _on_card_image_gui_input(event: InputEvent) -> void:
-	if(event is InputEventMouseButton):
+	# If left clicking
+	if(event is InputEventMouseButton and event.button_index == 1 and event.pressed == true):
 		toggle_rect()

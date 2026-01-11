@@ -38,4 +38,5 @@ func on_confirm():
 			Global.deck.push_back(p.card_img.card_num) 
 			Global.save_data()
 		self.hide()
-		GameManager.day_machine.on_card_selection_confirmed()
+		# GameManager.day_machine.on_card_selection_confirmed()
+		GameManager.continue_card_selection()

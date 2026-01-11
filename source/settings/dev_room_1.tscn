@@ -38,6 +38,7 @@ visible = false
 
 [node name="PackViewer" parent="CanvasLayer" instance=ExtResource("6_go7e0")]
 visible = false
+anchors_preset = 15
 
 [node name="CardDiscardMenu" parent="CanvasLayer" instance=ExtResource("7_rsy5m")]
 visible = false

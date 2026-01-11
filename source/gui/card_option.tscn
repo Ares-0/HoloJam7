@@ -4,28 +4,34 @@
 [ext_resource type="PackedScene" uid="uid://4ylo0t6wf2a0" path="res://source/gui/card_image.tscn" id="2_6qaqn"]
 
 [node name="CardOption" type="Control"]
+custom_minimum_size = Vector2(138, 232)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -948.0
-offset_bottom = -485.0
+offset_right = -1142.0
+offset_bottom = -488.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6qaqn")
 
 [node name="CardImage" parent="." instance=ExtResource("2_6qaqn")]
 layout_mode = 1
-offset_left = -1.0
-offset_top = 2.0
-offset_right = -5.0
-offset_bottom = -1.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 138.0
+offset_bottom = 232.0
+grow_horizontal = 1
+grow_vertical = 1
+mouse_filter = 2
+mouse_behavior_recursive = 1
 
 [node name="ColorRect" type="ColorRect" parent="CardImage"]
-layout_mode = 0
-offset_top = 1.0
-offset_right = 128.0
-offset_bottom = 204.0
+layout_mode = 1
+offset_right = 138.0
+offset_bottom = 205.0
+mouse_filter = 2
 color = Color(0, 0, 0, 0.7058824)
 
 [connection signal="gui_input" from="." to="." method="_on_card_image_gui_input"]

@@ -59,6 +59,7 @@ func _ready() -> void:
 	
 	for item in game_data["player_data"]["deck"]: # change json floats to ints
 		deck.append(int(item))
+	deck.sort()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
