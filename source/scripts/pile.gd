@@ -35,8 +35,9 @@ func add_card(card: Card) -> void:
 
 func add_cards(pile: Array[Card]) -> void:
 	for card in pile:
-		assert(card.get_parent() != null)
-		card.reparent(self)
+		add_child(card)
+		#assert(card.get_parent() != null)
+		#card.reparent(self)
 		cards.push_back(card)
 	update_count()
 
