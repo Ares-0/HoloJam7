@@ -61,7 +61,10 @@ func order_serve_phase() -> void:
 	# Phase to complete the order and finish the loop
 	current_state = OrderState.SERVE
 
-	if current_order_num == GameManager.total_orders:
+	# Collect feedback
+	var acceptable: bool = GameManager.eval_score()
+
+	if current_order_num == GameManager.total_orders and acceptable:
 		GameManager.game_timer.stop()
 		AudioManager.play("BellDone")
 		await get_tree().create_timer(0.1).timeout
@@ -76,19 +79,17 @@ func order_serve_phase() -> void:
 	GameManager.customer.move_offscreen()
 	await SignalBus.customer_done_moving
 
-	# Collect feedback (in this func)
-	GameManager.eval_score()
-
 	GameManager.reset_dish_hud()
 
 	# Fill hand with cards
 	GameManager.fill_hand()
 
-	if current_order_num == GameManager.total_orders:
+	if current_order_num == GameManager.total_orders and acceptable:
 		current_state = OrderState.WAIT
 		SignalBus.all_orders_completed.emit()
 	else:
-		current_order_num = current_order_num + 1
+		if acceptable:
+			current_order_num = current_order_num + 1
 		# automatically return to begin phase
 		# I actually don't like the stack growing like this
 		order_begin_phase()

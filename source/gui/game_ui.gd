@@ -89,5 +89,7 @@ func fade_out(duration: float) -> void:
 	tween.tween_property(fade_rect, "modulate", Color.WHITE, duration)
 
 func _on_bell_button_pressed() -> void:
+	if not GameManager.can_serve():
+		return
 	SignalBus.serve_pressed.emit()
 	AudioManager.play_random_bell_sound()

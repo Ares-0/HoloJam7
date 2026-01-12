@@ -23,7 +23,7 @@ func load_json_file(filePath: String) -> Dictionary:
 
 func get_card_info(card_num: int) -> Dictionary:
 	var card_str: String = str(card_num) # dict keys are strings
-	assert(card_str in raw_data, "Tried to read card info for nonexistent number")
+	assert(card_str in raw_data, str("Tried to read card info for nonexistent number ", card_num))
 
 	# Validate that the data exists, even if its blank
 	var last = raw_data[card_str]

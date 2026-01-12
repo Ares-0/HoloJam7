@@ -8,6 +8,8 @@ extends Node
 const MAX_CARDS_PER_HAND: int = 5
 const REROLL_COST: int = 1
 
+var falling_text_scene = preload("res://source/gui/falling_text.tscn")
+
 # These are filled externally
 var draw_pile: Pile
 var discard_pile: Pile
@@ -85,9 +87,11 @@ func add_values_to_dish(tastes: Dictionary) -> void:
 	HUD.update_dish_stats(dish_taste)
 	#print(dish_taste)
 
-func eval_score() -> void:
+func eval_score() -> bool:
+	# Returns a bool "acceptable", true if taste was close to customer order
+	# or false if too far (reaction 2)
 	# A score of 0 means the dish perfectly matched the taste
-	var score = 0
+	var score: int = 0
 
 	# simple algebra
 	score = score + abs(current_order.taste_reqs["sweet"] - dish_taste["sweet"])
@@ -95,19 +99,44 @@ func eval_score() -> void:
 	score = score + abs(current_order.taste_reqs["sour"] - dish_taste["sour"])
 	score = score + abs(current_order.taste_reqs["umami"] - dish_taste["umami"])
 
+	# If submitted empty plate, autofail
+	var sum = dish_taste["sweet"] + dish_taste["salty"] + dish_taste["sour"] + dish_taste["umami"]
+	if sum == 0:
+		score = 100
+
 	print("Lost ", score, " points! Good enough! Keep going!")
-	
+
+	# Results table
 	# TODO balance all these
 	var react: int = 0
-	if score < 3:
+	var t: String = ""
+	if score == 100:
+		t = "Boring!\nDoesn't Count!"
+		react = 1
+	elif score == 0:
 		react = 0
+		t = "Perfect!"
+	elif score < 3:
+		react = 0
+		t = "Great!"
 	elif score < 6:
 		react = 1
-	elif score < 10:
+		t = "Good Enough!\nKeep Going!"
+	else:
 		react = 2
+		t = "What was THAT?\nDoesn't Count!"
 	react_bubble.reaction_play(react)
 
-	return
+	var feedback_text = falling_text_scene.instantiate()
+	HUD.add_child(feedback_text)
+	# feedback_text.scale = Vector2(1.2,1.2)
+	feedback_text.global_position = Vector2(1300, 360)
+	feedback_text.start(t, 3.0, -1.0)
+
+	# Final judgement
+	if score >= 6:
+		return false
+	return true
 
 func reset_dish_hud() -> void:
 	# Resets order reqs, order name, and dish stats
@@ -156,6 +185,12 @@ func can_play_card() -> bool:
 	if order_machine.current_state != order_machine.OrderState.SELECT:
 		return false
 	return true
+
+func can_serve() -> bool:
+	# Similar to above
+	if day_machine.current_state in [day_machine.DayState.SETUP,day_machine.DayState.ORDER]:
+		return true
+	return false
 
 func empty_piles_and_hand() -> void:
 	# drop all cards from draw pile, discard pile, and hand

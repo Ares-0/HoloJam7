@@ -10,10 +10,10 @@ outline_size = 19
 outline_color = Color(0.87058824, 0.38039216, 0.4117647, 1)
 
 [node name="FallingText" type="Label"]
-offset_right = 302.65488
+offset_right = 244.2478
 offset_bottom = 108.0
 scale = Vector2(0.565, 0.565)
-text = "-0:00"
+text = "-0:02"
 label_settings = SubResource("LabelSettings_t7oqk")
 horizontal_alignment = 2
 script = ExtResource("1_ecv3k")
