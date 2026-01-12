@@ -40,6 +40,7 @@ func _on_options_pressed() -> void:
 	#get_tree().change_scene_to_file("res://source/gui/menus/settings.tscn")
 
 func _on_credits_pressed() -> void:
+	AudioManager.play("UISelectA")
 	get_tree().change_scene_to_file("res://source/gui/menus/credits.tscn")
 
 func _on_quit_pressed() -> void:
