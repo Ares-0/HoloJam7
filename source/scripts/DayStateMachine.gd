@@ -12,6 +12,8 @@ extends Node
 #   FAIL state returns to SETUP of same day
 #   PASS returns to SETUP of next day
 
+const MAX_DAYS_PER_GAME: int = 5
+
 enum DayState {
 	SETUP, # Start of day phase, player can look at and manage deck
 	ORDER, # Order loop is executing
@@ -20,6 +22,7 @@ enum DayState {
 }
 var current_state: DayState = DayState.SETUP
 
+# Values that change day to day
 var current_day: int = 1
 var time_in_day: int = 120
 var total_orders: int # theres redundant copies of this var, one in each machine
@@ -80,7 +83,16 @@ func day_pass_phase() -> void:
 	GameManager.game_timer.stop()
 	GameManager.cook.move_offscreen()
 	await SignalBus.customer_done_moving 
-	
+
+	# If this is the end of day 5, move to credits screen
+	if current_day > MAX_DAYS_PER_GAME:
+		GameManager.returning_to_menu = true
+		Global.previous_scene = get_tree().current_scene.scene_file_path
+		GameManager.HUD.fade_out(2.0)
+		await get_tree().create_timer(2.0).timeout
+		get_tree().change_scene_to_file("res://source/gui/menus/credits.tscn")
+		return # safety
+
 	# bring up interface to add / remove cards 
 	GameManager.begin_card_selection()
 

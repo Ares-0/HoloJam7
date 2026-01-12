@@ -258,6 +258,9 @@ func _on_mouse_exited() -> void:
 		self.unfocus()
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if GameManager.returning_to_menu:
+		return
+	
 	#  Tricky mouse over edge cases
 	if current_state != State.FOCUS:
 		if not GameManager.hand.has_focused_card():

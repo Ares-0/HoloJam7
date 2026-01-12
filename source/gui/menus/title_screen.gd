@@ -10,7 +10,7 @@ func _ready() -> void:
 
 	# Audio setup
 	# Keep playing music if coming from credits
-	if Global.previous_scene != "res://source/gui/menus/credits.tscn":
+	if AudioManager.current_ost != NodePath("BgmMenu"):
 		AudioManager.set_soundtrack("BgmMenu")
 		await get_tree().create_timer(1.0).timeout
 		AudioManager.soundtrack_start()

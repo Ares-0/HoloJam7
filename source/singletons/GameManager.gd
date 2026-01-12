@@ -138,7 +138,7 @@ func eval_score() -> bool:
 	feedback_text.start(t, 3.0, -1.0)
 
 	# Final judgement
-	if score >= 6:
+	if score >= 4:
 		return false
 	return true
 
