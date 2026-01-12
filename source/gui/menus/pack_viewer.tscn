@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://rci3f2t4gt5"]
+[gd_scene load_steps=10 format=3 uid="uid://rci3f2t4gt5"]
 
 [ext_resource type="Script" uid="uid://sdbbhqmrqx28" path="res://source/gui/menus/pack_viewer.gd" id="1_df8jn"]
 [ext_resource type="PackedScene" uid="uid://4ylo0t6wf2a0" path="res://source/gui/card_image.tscn" id="2_gddhk"]
 [ext_resource type="FontFile" uid="uid://bb7mjr65gyr7i" path="res://assets/fonts/04B_30__.TTF" id="2_tiaid"]
 [ext_resource type="Texture2D" uid="uid://bvmx30geg4a86" path="res://assets/ui/UI_Clock_cropped.png" id="4_kquc2"]
+[ext_resource type="Texture2D" uid="uid://2rrjknuptjgd" path="res://assets/ui/UI_Clock_cropped_dark.png" id="5_3vte1"]
 [ext_resource type="FontFile" uid="uid://b00a6crxmm10e" path="res://assets/fonts/Pix32.ttf" id="5_x8tho"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kquc2"]
@@ -115,6 +116,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("4_kquc2")
+texture_hover = ExtResource("5_3vte1")
 ignore_texture_size = true
 stretch_mode = 0
 

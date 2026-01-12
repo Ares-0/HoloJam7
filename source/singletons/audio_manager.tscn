@@ -17,10 +17,11 @@
 [ext_resource type="AudioStream" uid="uid://btino1bcm0twa" path="res://assets/sfx/ticking10.wav" id="13_v2d5w"]
 [ext_resource type="AudioStream" uid="uid://bkohawblgl55" path="res://assets/sfx/ui_hover_c.wav" id="14_a5uqk"]
 [ext_resource type="AudioStream" uid="uid://dbcec862yflrh" path="res://assets/sfx/ui_select_a.wav" id="15_acctt"]
-[ext_resource type="AudioStream" uid="uid://c0vkwmr482vgc" path="res://assets/bgm/bgm_main.mp3" id="18_cmsfw"]
-[ext_resource type="AudioStream" uid="uid://dtcygg312kmqg" path="res://assets/bgm/bgm_menu.mp3" id="19_v2d5w"]
+[ext_resource type="AudioStream" uid="uid://0m563lcigs0f" path="res://assets/bgm/Take Your Time full.wav" id="18_v2d5w"]
+[ext_resource type="AudioStream" uid="uid://dkt0ynp6lpjbx" path="res://assets/bgm/menu theme.wav" id="19_v2d5w"]
 
 [node name="AudioManager" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_b15hf")
 
 [node name="BellDone" type="AudioStreamPlayer2D" parent="."]
@@ -102,12 +103,10 @@ volume_db = 5.0
 bus = &"SFX"
 
 [node name="BgmMain" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("18_cmsfw")
+stream = ExtResource("18_v2d5w")
 volume_db = -5.0
 bus = &"Music"
-parameters/looping = true
 
 [node name="BgmMenu" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("19_v2d5w")
 bus = &"Music"
-parameters/looping = true

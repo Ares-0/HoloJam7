@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cyh3tuxm0pbkm"]
+[gd_scene load_steps=10 format=3 uid="uid://cyh3tuxm0pbkm"]
 
 [ext_resource type="Script" uid="uid://cqm5wulm3cg75" path="res://source/gui/menus/card_select_menu.gd" id="1_heufy"]
 [ext_resource type="Texture2D" uid="uid://bjhjuhahf0lpi" path="res://assets/ui/UI_Bottom.png" id="2_7otw0"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://bb7mjr65gyr7i" path="res://assets/fonts/04B_30__.TTF" id="3_0sl0c"]
 [ext_resource type="FontFile" uid="uid://b00a6crxmm10e" path="res://assets/fonts/Pix32.ttf" id="3_igaf6"]
 [ext_resource type="PackedScene" uid="uid://bgwbbuj7c411i" path="res://source/gui/card_option.tscn" id="4_qgceg"]
+[ext_resource type="Texture2D" uid="uid://2rrjknuptjgd" path="res://assets/ui/UI_Clock_cropped_dark.png" id="6_0sl0c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e008f"]
 font = ExtResource("3_0sl0c")
@@ -117,6 +118,7 @@ offset_right = 916.0
 offset_bottom = 764.0
 size_flags_horizontal = 2
 texture_normal = ExtResource("2_qgceg")
+texture_hover = ExtResource("6_0sl0c")
 
 [node name="Label" type="Label" parent="Control/Confirm"]
 layout_mode = 1

@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://8vu4176fg1b6"]
+[gd_scene load_steps=11 format=3 uid="uid://8vu4176fg1b6"]
 
 [ext_resource type="Script" uid="uid://i3uuedyhswqs" path="res://source/gui/menus/card_discard_menu.gd" id="1_jytat"]
 [ext_resource type="Texture2D" uid="uid://bjhjuhahf0lpi" path="res://assets/ui/UI_Bottom.png" id="2_psedw"]
 [ext_resource type="Texture2D" uid="uid://bvmx30geg4a86" path="res://assets/ui/UI_Clock_cropped.png" id="2_qra3p"]
 [ext_resource type="FontFile" uid="uid://bb7mjr65gyr7i" path="res://assets/fonts/04B_30__.TTF" id="3_jliu2"]
 [ext_resource type="FontFile" uid="uid://b00a6crxmm10e" path="res://assets/fonts/Pix32.ttf" id="3_xqiqj"]
+[ext_resource type="Texture2D" uid="uid://2rrjknuptjgd" path="res://assets/ui/UI_Clock_cropped_dark.png" id="6_8ijek"]
 [ext_resource type="PackedScene" uid="uid://bgwbbuj7c411i" path="res://source/gui/card_option.tscn" id="6_jliu2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8ijek"]
@@ -104,6 +105,7 @@ offset_right = 877.0
 offset_bottom = 739.0
 size_flags_horizontal = 2
 texture_normal = ExtResource("2_qra3p")
+texture_hover = ExtResource("6_8ijek")
 
 [node name="Label" type="Label" parent="Control/Next"]
 layout_mode = 1
