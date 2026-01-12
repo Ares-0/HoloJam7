@@ -3,40 +3,40 @@
 		"special": false,
 		"image": "res://icon.svg",
 		"name": "Test",
-		"cost": 0.0,
+		"cost": 0,
 		"taste_profile": {
-			"sweet": 0.0,
-			"salty": 0.0,
-			"sour": 0.0,
-			"umami": 0.0
+			"sweet": 0,
+			"salty": 0,
+			"sour": 0,
+			"umami": 0
 		}
 	},
 	"1": {
 		"special": false,
 		"image": "res://assets/ingredients/Apple.png",
 		"name": "Apple",
-		"cost": 1.0,
+		"cost": 3,
 		"taste_profile": {
-			"sweet": 1.0,
-			"salty": 0.0,
-			"sour": 1.0,
-			"umami": 0.0
+			"sweet": 1,
+			"salty": 0,
+			"sour": 0,
+			"umami": 0
 		},
-		"bonus_power": 0.0,
+		"bonus_power": 0,
 		"bonus_profile": [
-			0.0
+			0
 		]
 	},
 	"2": {
 		"special": false,
 		"image": "res://assets/ingredients/Cheese.png",
 		"name": "Cheese",
-		"cost": 2.0,
+		"cost": 3,
 		"taste_profile": {
-			"sweet": 0.0,
-			"salty": 1.0,
-			"sour": 0.0,
-			"umami": 0.0
+			"sweet": 0,
+			"salty": 1,
+			"sour": 0,
+			"umami": 0
 		},
 		"bonus_power": 0,
 		"bonus_profile": [
@@ -45,14 +45,14 @@
 	},
 	"3": {
 		"special": false,
-		"image": "res://assets/ingredients/Chicken Leg.png",
-		"name": "Chicken Leg",
-		"cost": 1.0,
+		"image": "res://assets/ingredients/Lemon.png",
+		"name": "Lemon",
+		"cost": 3,
 		"taste_profile": {
-			"sweet": 0.0,
-			"salty": 0.0,
-			"sour": 1.0,
-			"umami": 0.0
+			"sweet": 0,
+			"salty": 0,
+			"sour": 1,
+			"umami": 0
 		},
 		"bonus_power": 0,
 		"bonus_profile": [
@@ -61,14 +61,14 @@
 	},
 	"4": {
 		"special": false,
-		"image": "res://assets/ingredients/Egg.png",
-		"name": "Egg",
-		"cost": 2.0,
+		"image": "res://assets/ingredients/Sausage.png",
+		"name": "Sausage",
+		"cost": 3,
 		"taste_profile": {
-			"sweet": 0.0,
-			"salty": 0.0,
-			"sour": 0.0,
-			"umami": 1.0
+			"sweet": 0,
+			"salty": 0,
+			"sour": 0,
+			"umami": 1
 		},
 		"bonus_power": 0,
 		"bonus_profile": [
@@ -77,14 +77,14 @@
 	},
 	"5": {
 		"special": false,
-		"image": "res://assets/ingredients/Fish.png",
-		"name": "Fish",
-		"cost": 2.0,
+		"image": "res://assets/ingredients/Chicken Leg.png",
+		"name": "Chicken Leg",
+		"cost": 4,
 		"taste_profile": {
-			"sweet": 0.0,
-			"salty": 0.0,
-			"sour": 0.0,
-			"umami": 1.0
+			"sweet": 0,
+			"salty": 1,
+			"sour": 0,
+			"umami": 2
 		},
 		"bonus_power": 0,
 		"bonus_profile": [
@@ -93,14 +93,14 @@
 	},
 	"6": {
 		"special": false,
-		"image": "res://assets/ingredients/Flour.png",
-		"name": "Flour",
-		"cost": 2.0,
+		"image": "res://assets/ingredients/Egg.png",
+		"name": "Egg",
+		"cost": 4,
 		"taste_profile": {
-			"sweet": 0.0,
-			"salty": 0.0,
-			"sour": 0.0,
-			"umami": 1.0
+			"sweet": 1,
+			"salty": 0,
+			"sour": 1,
+			"umami": 0
 		},
 		"bonus_power": 0,
 		"bonus_profile": [
@@ -109,14 +109,14 @@
 	},
 	"7": {
 		"special": false,
-		"image": "res://assets/ingredients/Lemon.png",
-		"name": "Lemon",
-		"cost": 2.0,
+		"image": "res://assets/ingredients/Fish.png",
+		"name": "Fish",
+		"cost": 4,
 		"taste_profile": {
-			"sweet": 0.0,
-			"salty": 0.0,
-			"sour": 0.0,
-			"umami": 1.0
+			"sweet": 0,
+			"salty": 2,
+			"sour": 0,
+			"umami": 0
 		},
 		"bonus_power": 0,
 		"bonus_profile": [
@@ -125,54 +125,180 @@
 	},
 	"8": {
 		"special": false,
-		"image": "res://assets/ingredients/Sausage.png",
-		"name": "Sausage",
-		"cost": 2.0,
+		"image": "res://assets/ingredients/Flour.png",
+		"name": "Flour",
+		"cost": 4,
 		"taste_profile": {
-			"sweet": 0.0,
-			"salty": 0.0,
-			"sour": 0.0,
-			"umami": 1.0
+			"sweet": 1,
+			"salty": 1,
+			"sour": 1,
+			"umami": 1
 		},
 		"bonus_power": 0,
 		"bonus_profile": [
 			0
 		]
 	},
-	"10": {
-		"special": true,
-		"name": "Apple H",
+	"11": {
+		"special": false,
 		"image": "res://assets/ingredients/Apple.png",
-		"cost": 0.0,
+		"name": "Ripe Apple",
+		"cost": 5,
 		"taste_profile": {
-			"sweet": 0.0,
-			"salty": 0.0,
-			"sour": 0.0,
-			"umami": 0.0
+			"sweet": 3,
+			"salty": 0,
+			"sour": 0,
+			"umami": 0
 		},
-		"bonus_power": 4.0,
+		"bonus_power": 0,
 		"bonus_profile": [
-			0.0,
-			1.0
+			0
 		]
 	},
-	"11": {
-		"special": true,
-		"name": "Cheese H",
+	"12": {
+		"special": false,
 		"image": "res://assets/ingredients/Cheese.png",
-		"cost": 0.0,
+		"name": "Wet Cheese",
+		"cost": 5,
 		"taste_profile": {
-			"sweet": 0.0,
-			"salty": 0.0,
-			"sour": 0.0,
-			"umami": 0.0
+			"sweet": 1,
+			"salty": 2,
+			"sour": 1,
+			"umami": 0
+		},
+		"bonus_power": 0,
+		"bonus_profile": [
+			0
+		]
+	},
+	"13": {
+		"special": false,
+		"image": "res://assets/ingredients/Lemon.png",
+		"name": "Yellow Lime",
+		"cost": 5,
+		"taste_profile": {
+			"sweet": 0,
+			"salty": 2,
+			"sour": 2,
+			"umami": 0
+		},
+		"bonus_power": 0,
+		"bonus_profile": [
+			0
+		]
+	},
+	"14": {
+		"special": false,
+		"image": "res://assets/ingredients/Flour.png",
+		"name": "Left Leg",
+		"cost": 5,
+		"taste_profile": {
+			"sweet": 1,
+			"salty": 1,
+			"sour": 0,
+			"umami": 3
+		},
+		"bonus_power": 0,
+		"bonus_profile": [
+			0
+		]
+	},
+	"30": {
+		"special": true,
+		"name": "Sus Apple",
+		"image": "res://assets/ingredients/Apple.png",
+		"cost": 1,
+		"taste_profile": {
+			"sweet": 2,
+			"salty": 0,
+			"sour": 0,
+			"umami": 2
+		},
+		"bonus_power": 3,
+		"bonus_profile": [
+			0,
+			1
+		]
+	},
+	"31": {
+		"special": true,
+		"name": "\"\"Cheese\"\"",
+		"image": "res://assets/ingredients/Cheese.png",
+		"cost": 1,
+		"taste_profile": {
+			"sweet": 0,
+			"salty": 1,
+			"sour": 13,
+			"umami": 0
 		},
 		"bonus_power": [
-			1.0,
-			5.0
+			5
 		],
 		"bonus_profile": [
-			3.0
+			2,
+			3
+		]
+	},
+	"32": {
+		"special": true,
+		"name": "Raw Egg",
+		"image": "res://assets/ingredients/Egg.png",
+		"cost": 1,
+		"taste_profile": {
+			"sweet": 0,
+			"salty": 0,
+			"sour": 0,
+			"umami": 0
+		},
+		"bonus_power": [
+			5
+		],
+		"bonus_profile": [
+			0,
+			1,
+			2,
+			3
+		]
+	},
+	"33": {
+		"special": true,
+		"name": "Flour..?",
+		"image": "res://assets/ingredients/Flour.png",
+		"cost": 0,
+		"taste_profile": {
+			"sweet": 1,
+			"salty": 2,
+			"sour": 1,
+			"umami": 2
+		},
+		"bonus_power": [
+			2,
+			5
+		],
+		"bonus_profile": [
+			0,
+			1,
+			2,
+			3
+		]
+	},
+	"34": {
+		"special": true,
+		"name": "Some Leg",
+		"image": "res://assets/ingredients/Chicken Leg.png",
+		"cost": 1,
+		"taste_profile": {
+			"sweet": 0,
+			"salty": 1,
+			"sour": 2,
+			"umami": 0
+		},
+		"bonus_power": [
+			0,
+			5
+		],
+		"bonus_profile": [
+			3
 		]
 	}
 }
