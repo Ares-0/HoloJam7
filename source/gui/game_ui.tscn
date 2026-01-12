@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://blma87368m17f"]
+[gd_scene load_steps=20 format=3 uid="uid://blma87368m17f"]
 
 [ext_resource type="Script" uid="uid://1grwospwaa7k" path="res://source/gui/game_ui.gd" id="1_0cyqu"]
 [ext_resource type="Texture2D" uid="uid://dwrbg425et6eg" path="res://assets/ui/UI_Sidebar.png" id="3_1j0tq"]
@@ -10,6 +10,7 @@
 [ext_resource type="FontFile" uid="uid://b00a6crxmm10e" path="res://assets/fonts/Pix32.ttf" id="8_72gkx"]
 [ext_resource type="Texture2D" uid="uid://bvmx30geg4a86" path="res://assets/ui/UI_Clock_cropped.png" id="9_72gkx"]
 [ext_resource type="Texture2D" uid="uid://b6x8uy4y07ose" path="res://assets/title screen/Button.png" id="10_jcs87"]
+[ext_resource type="Texture2D" uid="uid://qqbhr3stutt7" path="res://assets/title screen/ButtonDark.png" id="11_0cyqu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cnw61"]
 font = ExtResource("7_v2kgr")
@@ -305,6 +306,7 @@ offset_top = 944.0
 offset_right = 346.0
 offset_bottom = 1023.0
 texture_normal = ExtResource("10_jcs87")
+texture_hover = ExtResource("11_0cyqu")
 ignore_texture_size = true
 stretch_mode = 4
 

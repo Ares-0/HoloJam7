@@ -18,3 +18,9 @@ func _on_retry_pressed() -> void:
 func _on_main_menu_pressed() -> void:
 	self.hide()
 	get_tree().change_scene_to_file("res://source/gui/menus/title_screen.tscn")
+
+func _on_retry_mouse_entered() -> void:
+	AudioManager.play("UIHoverC")
+
+func _on_main_menu_mouse_entered() -> void:
+	AudioManager.play("UIHoverA")
