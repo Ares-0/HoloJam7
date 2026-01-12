@@ -13,12 +13,6 @@ font_size = 72
 outline_size = 16
 outline_color = Color(0.8627451, 0.4392157, 0.27058825, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_uwynh"]
-font = ExtResource("5_genlh")
-font_size = 48
-outline_size = 14
-outline_color = Color(0.8627451, 0.4392157, 0.27058825, 1)
-
 [node name="GameOverMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -99,7 +93,7 @@ offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "RETRY"
-label_settings = SubResource("LabelSettings_uwynh")
+label_settings = ExtResource("5_genlh")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -122,7 +116,7 @@ offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "MAIN MENU"
-label_settings = SubResource("LabelSettings_uwynh")
+label_settings = ExtResource("5_genlh")
 horizontal_alignment = 1
 vertical_alignment = 1
 
