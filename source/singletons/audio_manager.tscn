@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://dkt0ynp6lpjbx" path="res://assets/bgm/menu theme.wav" id="19_v2d5w"]
 
 [node name="AudioManager" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_b15hf")
 
 [node name="BellDone" type="AudioStreamPlayer2D" parent="."]

@@ -31,6 +31,9 @@ var order_gen: OrderGenerator
 var day_machine: DayStateMachine
 var order_machine: OrderStateMachine
 
+# Flag used to cancel actions that would break during return to menu deleting things
+var returning_to_menu: bool
+
 var dish_taste = {
 	"sweet": 0,
 	"salty": 0,
@@ -53,6 +56,7 @@ func _process(delta: float) -> void:
 
 func game_start() -> void:
 	#await get_tree().process_frame
+	returning_to_menu = false
 
 	AudioManager.set_soundtrack("BgmMain")
 	AudioManager.soundtrack_start()
