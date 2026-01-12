@@ -20,9 +20,10 @@ enum DayState {
 }
 var current_state: DayState = DayState.SETUP
 
+var current_day: int = 1
 var time_in_day: int = 120
 var total_orders: int # theres redundant copies of this var, one in each machine
-var current_day: int = 1
+var avg_difficulty: int
 
 func _ready() -> void:
 	GameManager.day_machine = self
@@ -36,16 +37,24 @@ func day_setup_phase() -> void:
 	GameManager.reset_dish_hud()
 	GameManager.order_machine.reset()
 
-	# New days can mean new values for a handful of variables
-	# How many orders in the day? Average difficulty of orders? How long to finish the day?
-
-	total_orders = 3
+	# TODO: Balance
+	# SET ORDERS FOR DAY
+	if current_day >= 5:
+		total_orders = 10
+	else:
+		total_orders = [3,5,7,9,10][current_day-1]
 	GameManager.set_total_order_num(total_orders)
 	GameManager.HUD.update_current_order_num(0)
 	GameManager.HUD.set_bell_text("Start")
 
+	# SET DIFFICULTY FOR DAY
 	GameManager.order_gen.set_difficulty(current_day+2)
 
+	# SET TIME IN DAY
+	if current_day >= 5:
+		time_in_day = 240
+	else:
+		time_in_day = [120,165,195,215,225][current_day-1]
 	GameManager.game_timer.setup(time_in_day)
 	GameManager.prepare_draw_pile()
 

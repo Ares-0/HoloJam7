@@ -74,19 +74,19 @@
 		"name": "Fried Rice",
 		"taste_reqs": {
 			"sweet": 0,
-			"salty": 1,
-			"sour": 1,
-			"umami": 1
+			"salty": 2,
+			"sour": 2,
+			"umami": 0
 		}
 	},
 	"8": {
 		"image": "res://assets/food/Icecream.png",
 		"name": "Ice Cream",
 		"taste_reqs": {
-			"sweet": 0,
+			"sweet": 2,
 			"salty": 1,
-			"sour": 1,
-			"umami": 1
+			"sour": 0,
+			"umami": 0
 		}
 	},
 	"9": {

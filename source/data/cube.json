@@ -228,12 +228,10 @@
 		"taste_profile": {
 			"sweet": 0,
 			"salty": 1,
-			"sour": 13,
+			"sour": 1,
 			"umami": 0
 		},
-		"bonus_power": [
-			5
-		],
+		"bonus_power": 5,
 		"bonus_profile": [
 			2,
 			3
@@ -250,9 +248,7 @@
 			"sour": 0,
 			"umami": 0
 		},
-		"bonus_power": [
-			5
-		],
+		"bonus_power": 5,
 		"bonus_profile": [
 			0,
 			1,

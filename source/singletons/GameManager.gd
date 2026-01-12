@@ -6,7 +6,7 @@ extends Node
 # Careful of scopes of stuff pulled out into state machines
 
 const MAX_CARDS_PER_HAND: int = 5
-const REROLL_COST: int = 1
+const REROLL_COST: int = 5
 
 var falling_text_scene = preload("res://source/gui/falling_text.tscn")
 
@@ -116,10 +116,10 @@ func eval_score() -> bool:
 	elif score == 0:
 		react = 0
 		t = "Perfect!"
-	elif score < 3:
+	elif score == 1:
 		react = 0
 		t = "Great!"
-	elif score < 6:
+	elif score < 4:
 		react = 1
 		t = "Good Enough!\nKeep Going!"
 	else:

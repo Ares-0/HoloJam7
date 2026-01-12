@@ -68,7 +68,8 @@ func on_confirm():
 	else:
 		AudioManager.play("UISelectA")
 		for p in picks:
-			Global.deck.push_back(p.card_img.card_num) 
+			Global.deck.push_back(p.card_img.card_num)
+			Global.deck.sort()
 			Global.save_data()
 		self.hide()
 		# GameManager.day_machine.on_card_selection_confirmed()
