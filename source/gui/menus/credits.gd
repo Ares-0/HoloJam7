@@ -19,4 +19,5 @@ func on_enter_scene():
 		return
 
 func on_main_menu_pressed(): 
+	Global.previous_scene = get_tree().current_scene.scene_file_path
 	get_tree().change_scene_to_file("res://source/gui/menus/title_screen.tscn")

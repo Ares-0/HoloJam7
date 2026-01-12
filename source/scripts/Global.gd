@@ -12,6 +12,7 @@ var window_size: int = 720 # manual default
 var deck : Array[int] 
 
 var game_finished = false 
+var previous_scene: String = "" # used for some music overrides
 
 #Default data for the game 
 var default_deck = [1, 2, 3, 4, 1, 2, 3, 4, 6, 8]

@@ -8,17 +8,15 @@ func _ready() -> void:
 	newgame_B.grab_focus()
 	$BlackScreen.visible = false
 
-	# How-to overlay
-
 	# Audio setup
-	AudioManager.set_soundtrack("BgmMenu")
-	await get_tree().create_timer(1.0).timeout
-	AudioManager.soundtrack_start()
+	# Keep playing music if coming from credits
+	if Global.previous_scene != "res://source/gui/menus/credits.tscn":
+		AudioManager.set_soundtrack("BgmMenu")
+		await get_tree().create_timer(1.0).timeout
+		AudioManager.soundtrack_start()
 
 	# Game state stuff
 	pass
-
-
 
 func _on_new_pressed() -> void:
 	pass
