@@ -45,30 +45,30 @@ func get_card_info(card_num: int) -> Dictionary:
 func get_reward_cards(col_a: int, col_b: int, col_c: int, wild: int) -> Array[int]:
 	# Pick num cards to be offered to the player at the end of the day
 	# parameters are int vals corresponding to number of cards to pull from that group
-	# col a: 1-8
-	# col b: 11-14
-	# col c: 30-34
+	# col a: 1-9
+	# col b: 11-15
+	# col c: 30-36
 	# wildcard: any
 	# There's a lot of hardcoding going on here but thats the sitch
 	var last: Array[int] = []
 
 	# dupe protection: reroll dupes once
 	for i in range(col_a):
-		var next = randi_range(1,8)
+		var next = randi_range(1,9)
 		if next in last:
-			next = randi_range(1,8)
+			next = randi_range(1,9)
 		last.append(next)
 
 	for i in range(col_b):
-		var next = randi_range(11,14)
+		var next = randi_range(11,15)
 		if next in last:
-			next = randi_range(11,14)
+			next = randi_range(11,15)
 		last.append(next)
 
 	for i in range(col_c):
-		var next = randi_range(30,34)
+		var next = randi_range(30,36)
 		if next in last:
-			next = randi_range(30,34)
+			next = randi_range(30,36)
 		last.append(next)
 
 	for i in range(wild):

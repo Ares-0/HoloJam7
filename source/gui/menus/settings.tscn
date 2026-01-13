@@ -143,6 +143,8 @@ offset_bottom = 23.0
 label_settings = ExtResource("3_y1njn")
 
 [connection signal="button_down" from="Buttons/Back" to="." method="back_to_main"]
+[connection signal="mouse_entered" from="Buttons/Back" to="." method="_on_back_mouse_entered"]
 [connection signal="button_down" from="Buttons/Save" to="." method="save_settings"]
+[connection signal="mouse_entered" from="Buttons/Save" to="." method="_on_save_mouse_entered"]
 [connection signal="value_changed" from="Music Volume Slider" to="." method="on_music_vol_changed"]
 [connection signal="value_changed" from="SFX Volume Slider" to="." method="on_sfx_vol_changed"]

@@ -26,7 +26,7 @@ func pause() -> void:
 	get_tree().paused = true
 	resume_button.grab_focus()
 	self.show()
-	AudioManager.soundtrack_reduce(0.25)
+	#AudioManager.soundtrack_reduce(0.25)
 
 	var tween = get_tree().create_tween()
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
@@ -37,13 +37,14 @@ func unpause() -> void:
 	# options menu .visible = false
 	paused = false
 	get_tree().paused = false
-	AudioManager.soundtrack_raise(0.25)
+	#AudioManager.soundtrack_raise(0.25)
 
 	var tween = get_tree().create_tween()
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.tween_property(pause_menu_ui, "position:y", pause_ui_pos_off.y, 0.1)
 	await get_tree().create_timer(0.1).timeout
 
+	$Settings.hide()
 	self.hide()
 	
 func _on_resume_t_pressed() -> void:
@@ -51,11 +52,9 @@ func _on_resume_t_pressed() -> void:
 	unpause()
 
 func _on_options_t_pressed() -> void:
-	AudioManager.play("UISelectA") 
-	var options_menu_prld = preload("res://source/gui/menus/settings.tscn") 
-	var options_menu = options_menu_prld.instantiate() 
-	options_menu.z_index = 4
-	add_child(options_menu)
+	AudioManager.play("UISelectA")
+	$Settings.open()
+	$Settings.show()
 
 func _on_quit_t_pressed() -> void:
 	#AudioManager.play("UISelectA")
