@@ -26,7 +26,7 @@ func pause() -> void:
 	get_tree().paused = true
 	resume_button.grab_focus()
 	self.show()
-	AudioManager.soundtrack_reduce(0.25)
+	#AudioManager.soundtrack_reduce(0.25)
 
 	var tween = get_tree().create_tween()
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
@@ -37,7 +37,7 @@ func unpause() -> void:
 	# options menu .visible = false
 	paused = false
 	get_tree().paused = false
-	AudioManager.soundtrack_raise(0.25)
+	#AudioManager.soundtrack_raise(0.25)
 
 	var tween = get_tree().create_tween()
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)

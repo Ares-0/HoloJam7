@@ -12,7 +12,7 @@ func _ready() -> void:
 	# Keep playing music if coming from credits
 	if AudioManager.current_ost != NodePath("BgmMenu"):
 		AudioManager.set_soundtrack("BgmMenu")
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(0.5).timeout
 		AudioManager.soundtrack_start()
 
 	# Game state stuff
