@@ -61,7 +61,7 @@ func _on_quit_t_pressed() -> void:
 	GameManager.returning_to_menu = true
 	paused = false
 	get_tree().paused = false
-	AudioManager.soundtrack_fade_out()
+	AudioManager.soundtrack_fade_out(1.5)
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property($FGFade, "color", Color.WHITE, 1.0)
 	await tween.finished

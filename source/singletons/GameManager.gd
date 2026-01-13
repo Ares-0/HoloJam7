@@ -59,7 +59,8 @@ func game_start() -> void:
 	returning_to_menu = false
 
 	AudioManager.set_soundtrack("BgmMain")
-	AudioManager.soundtrack_start()
+	# AudioManager.soundtrack_start()
+	AudioManager.soundtrack_fade_in(1.5)
 
 	# prepare_draw_pile() # moved to day_setup_phase
 

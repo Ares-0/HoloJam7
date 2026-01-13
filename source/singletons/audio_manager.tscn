@@ -17,7 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://btino1bcm0twa" path="res://assets/sfx/ticking10.wav" id="13_v2d5w"]
 [ext_resource type="AudioStream" uid="uid://bkohawblgl55" path="res://assets/sfx/ui_hover_c.wav" id="14_a5uqk"]
 [ext_resource type="AudioStream" uid="uid://dbcec862yflrh" path="res://assets/sfx/ui_select_a.wav" id="15_acctt"]
-[ext_resource type="AudioStream" uid="uid://0m563lcigs0f" path="res://assets/bgm/Take Your Time full.wav" id="18_v2d5w"]
+[ext_resource type="AudioStream" uid="uid://behlb4lla5wyn" path="res://assets/bgm/Take Your Time HJ7 cut_no sweep.wav" id="18_v2d5w"]
 [ext_resource type="AudioStream" uid="uid://dkt0ynp6lpjbx" path="res://assets/bgm/menu theme.wav" id="19_v2d5w"]
 
 [node name="AudioManager" type="Node2D"]
