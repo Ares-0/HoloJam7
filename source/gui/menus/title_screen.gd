@@ -4,7 +4,7 @@ extends Control
 @onready var newgame_B: TextureButton = %New
 @onready var blackscreen: ColorRect = $BlackScreen
 
-func _ready() -> void:
+func _ready() -> void: 
 	newgame_B.grab_focus()
 	$BlackScreen.visible = false
 
@@ -14,9 +14,12 @@ func _ready() -> void:
 		AudioManager.set_soundtrack("BgmMenu")
 		await get_tree().create_timer(0.5).timeout
 		AudioManager.soundtrack_start()
-
-	# Game state stuff
-	pass
+	
+	#Resetting the deck
+	Global.deck = [] 
+	for x in range(0,len(Global.default_deck)):
+		Global.deck.append(Global.default_deck[x])
+	Global.save_data()
 
 func _on_new_pressed() -> void:
 	pass
