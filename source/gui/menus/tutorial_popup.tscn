@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4xjg2c465p1"]
+[gd_scene load_steps=10 format=3 uid="uid://c4xjg2c465p1"]
 
 [ext_resource type="Script" uid="uid://c88edh7cvgha3" path="res://source/gui/menus/tutorial_popup.gd" id="1_64g8g"]
 [ext_resource type="Texture2D" uid="uid://bvmx30geg4a86" path="res://assets/ui/UI_Clock_cropped.png" id="2_l8s1e"]
+[ext_resource type="Texture2D" uid="uid://yeyuictienbj" path="res://assets/ui/white_outline.png" id="3_0vdd2"]
 [ext_resource type="Texture2D" uid="uid://2rrjknuptjgd" path="res://assets/ui/UI_Clock_cropped_dark.png" id="3_64g8g"]
 [ext_resource type="FontFile" uid="uid://b00a6crxmm10e" path="res://assets/fonts/Pix32.ttf" id="4_bg7wi"]
 [ext_resource type="Texture2D" uid="uid://cgt44w37pxonl" path="res://assets/ui/UI_Clock_cropped_darker.png" id="6_0vdd2"]
@@ -79,7 +80,6 @@ theme_override_constants/margin_bottom = 25
 
 [node name="Page 0" type="Control" parent="CenterContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 
 [node name="Text0" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/Page 0"]
@@ -136,10 +136,37 @@ label_settings = SubResource("LabelSettings_bg7wi")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="BoxServe" type="NinePatchRect" parent="CenterContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/Page 2"]
+unique_name_in_owner = true
+modulate = Color(0.7411765, 0.22745098, 0.42352942, 1)
+layout_mode = 0
+offset_left = -436.0
+offset_top = 634.0
+offset_right = -130.0
+offset_bottom = 760.0
+texture = ExtResource("3_0vdd2")
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+
 [node name="Page 3" type="Control" parent="CenterContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
+
+[node name="BoxClock" type="NinePatchRect" parent="CenterContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/Page 3"]
+unique_name_in_owner = true
+modulate = Color(0.7411765, 0.22745098, 0.42352942, 1)
+layout_mode = 0
+offset_left = -500.0
+offset_top = -262.0
+offset_right = -79.0
+offset_bottom = -94.0
+texture = ExtResource("3_0vdd2")
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
 
 [node name="Text3" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/Page 3"]
 layout_mode = 1
@@ -157,8 +184,21 @@ vertical_alignment = 1
 
 [node name="Page 4" type="Control" parent="CenterContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
+
+[node name="BoxStart" type="NinePatchRect" parent="CenterContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/Page 4"]
+unique_name_in_owner = true
+modulate = Color(0.74, 0.22940001, 0.42512995, 1)
+layout_mode = 0
+offset_left = -436.0
+offset_top = 634.0
+offset_right = -130.0
+offset_bottom = 760.0
+texture = ExtResource("3_0vdd2")
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
 
 [node name="Text4" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/Page 4"]
 layout_mode = 1
@@ -168,9 +208,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "At the end of the day, add new ingredients to your deck
-including cheap, but unpredictable, Hacchama Cards!
+including cheap, but unpredictable, Haachama Cards!
 
-Have fun!"
+Check out your hand below, 
+then Press START to begin cooking. Have fun!"
 label_settings = SubResource("LabelSettings_bg7wi")
 horizontal_alignment = 1
 vertical_alignment = 1

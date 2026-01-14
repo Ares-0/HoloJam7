@@ -12,6 +12,11 @@ var current_page: int = 0
 @onready var page4: Control = %"Page 4"
 @onready var pages: Array[Control] = [page0, page1, page2, page3, page4]
 
+@onready var box2 = %BoxServe
+@onready var box3 = %BoxClock
+@onready var box4 = %BoxStart
+@onready var boxes = [box2, box3, box4]
+
 func _ready() -> void:
 	$Ref.hide()
 	self.hide()
@@ -22,6 +27,8 @@ func _ready() -> void:
 func hide_all_pages() -> void:
 	for item in pages:
 		item.visible = false
+	for item in boxes:
+		item.visible = false
 
 func set_page(num: int) -> void:
 	hide_all_pages()
@@ -29,11 +36,31 @@ func set_page(num: int) -> void:
 
 	%"Prev Button".disabled = (num == 0)
 	%"Next Button".disabled = (num == NUM_PAGES-1)
-	
+
+	if num == 2:
+		box2.visible = true
+		flash(box2)
+	if num == 3:
+		box3.visible = true
+		flash(box3)
+	if num == 4:
+		box4.visible = true
+		flash(box4)
+
 	if num == NUM_PAGES - 1:
 		%SkipLabel.text = "Done"
 	else:
 		%SkipLabel.text = "Skip"
+
+func flash(object) -> void:
+	await get_tree().create_timer(0.1).timeout
+	object.visible = false
+	await get_tree().create_timer(0.1).timeout
+	object.visible = true
+	await get_tree().create_timer(0.1).timeout
+	object.visible = false
+	await get_tree().create_timer(0.1).timeout
+	object.visible = true
 
 func _on_next_button_mouse_entered() -> void:
 	pass
