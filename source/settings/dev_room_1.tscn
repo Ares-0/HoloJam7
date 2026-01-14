@@ -33,9 +33,6 @@ script = ExtResource("1_l6tno")
 [node name="DevHud" parent="CanvasLayer" instance=ExtResource("3_yeh31")]
 visible = false
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_i7gob")]
-visible = false
-
 [node name="GameOverMenu" parent="CanvasLayer" instance=ExtResource("5_g0kuk")]
 visible = false
 
@@ -49,6 +46,9 @@ visible = false
 visible = false
 
 [node name="Tutorial" parent="CanvasLayer" instance=ExtResource("9_rsy5m")]
+visible = false
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_i7gob")]
 visible = false
 
 [node name="Hand" parent="." instance=ExtResource("2_5olku")]
