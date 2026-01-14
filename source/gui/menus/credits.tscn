@@ -73,7 +73,7 @@ label_settings = ExtResource("3_qs1l1")
 
 [node name="Design and Coordination" type="Label" parent="VBoxContainer/Credits List"]
 layout_mode = 2
-text = "Planning and Co-ordination: StarlitVoid"
+text = "Game Design: StarlitVoid"
 label_settings = ExtResource("3_qs1l1")
 
 [node name="Main Menu Button" type="TextureButton" parent="."]
