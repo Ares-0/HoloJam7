@@ -5,8 +5,8 @@
 [ext_resource type="FontFile" uid="uid://b00a6crxmm10e" path="res://assets/fonts/Pix32.ttf" id="3_34yk4"]
 [ext_resource type="Texture2D" uid="uid://dcvsh55y52s8v" path="res://assets/cards/Generic card.png" id="4_a1oiy"]
 [ext_resource type="Texture2D" uid="uid://c6vsdgvxosmja" path="res://assets/cards/Haachama card.png" id="5_63v6m"]
+[ext_resource type="Texture2D" uid="uid://dfaqbk6hnkbk6" path="res://assets/ingredients/Egg.png" id="5_jvt3b"]
 [ext_resource type="FontFile" uid="uid://bb7mjr65gyr7i" path="res://assets/fonts/04B_30__.TTF" id="6_63v6m"]
-[ext_resource type="Texture2D" uid="uid://chc0nyffs1ig1" path="res://assets/ingredients/Apple.png" id="6_jvt3b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_34yk4"]
 font = ExtResource("6_63v6m")
@@ -72,7 +72,8 @@ offset_top = 2.9999962
 offset_right = 319.0
 offset_bottom = 285.0
 scale = Vector2(0.365, 0.365)
-texture = ExtResource("6_jvt3b")
+texture = ExtResource("5_jvt3b")
+stretch_mode = 3
 
 [node name="Cost" type="Label" parent="."]
 layout_mode = 0
