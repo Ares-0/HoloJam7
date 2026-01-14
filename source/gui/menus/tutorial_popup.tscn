@@ -1,0 +1,266 @@
+[gd_scene load_steps=9 format=3 uid="uid://c4xjg2c465p1"]
+
+[ext_resource type="Script" uid="uid://c88edh7cvgha3" path="res://source/gui/menus/tutorial_popup.gd" id="1_64g8g"]
+[ext_resource type="Texture2D" uid="uid://bvmx30geg4a86" path="res://assets/ui/UI_Clock_cropped.png" id="2_l8s1e"]
+[ext_resource type="Texture2D" uid="uid://2rrjknuptjgd" path="res://assets/ui/UI_Clock_cropped_dark.png" id="3_64g8g"]
+[ext_resource type="FontFile" uid="uid://b00a6crxmm10e" path="res://assets/fonts/Pix32.ttf" id="4_bg7wi"]
+[ext_resource type="Texture2D" uid="uid://cgt44w37pxonl" path="res://assets/ui/UI_Clock_cropped_darker.png" id="6_0vdd2"]
+[ext_resource type="Texture2D" uid="uid://b6x8uy4y07ose" path="res://assets/title screen/Button.png" id="6_bg7wi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bg7wi"]
+line_spacing = 2.0
+font_size = 37
+outline_size = 10
+outline_color = Color(0.8627451, 0.4392157, 0.27058825, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0vdd2"]
+font = ExtResource("4_bg7wi")
+font_size = 46
+outline_size = 14
+outline_color = Color(0.8627451, 0.4392157, 0.27058825, 1)
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_64g8g")
+metadata/_edit_vertical_guides_ = [1921.0]
+metadata/_edit_horizontal_guides_ = [1081.0]
+
+[node name="Ref" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -311.11108
+offset_top = -175.0
+offset_right = 1608.8889
+offset_bottom = 905.0
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1100, 400)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("6_bg7wi")
+region_rect = Rect2(0, 0, 521, 166)
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer/VBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Page 0" type="Control" parent="CenterContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Text0" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/Page 0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Welcome to Haachama's Cooking Chaos!
+
+Customers will order food, and you as Haachama
+will add the finishing touches!"
+label_settings = SubResource("LabelSettings_bg7wi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Page 1" type="Control" parent="CenterContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Text1" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/Page 1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Customers will make taste requests on the left
+
+<Left Click> incredient cards to add their tastes to the dish
+<Right Click> a card to discard it and draw a replacement"
+label_settings = SubResource("LabelSettings_bg7wi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Page 2" type="Control" parent="CenterContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Text2" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/Page 2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press SERVE when you think the order is ready
+
+It doesn't have to be perfect
+but if the flavors are too far off, the order won't count!"
+label_settings = SubResource("LabelSettings_bg7wi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Page 3" type="Control" parent="CenterContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Text3" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/Page 3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Watch the clock! Every day has limited time
+Playing cards costs time!
+Discarding cards costs more time!"
+label_settings = SubResource("LabelSettings_bg7wi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Page 4" type="Control" parent="CenterContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Text4" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/Page 4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "At the end of the day, add new ingredients to your deck
+including cheap, but unpredictable, Hacchama Cards!
+
+Have fun!"
+label_settings = SubResource("LabelSettings_bg7wi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="CenterContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 36.13)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 79
+alignment = 1
+
+[node name="Control2" type="Control" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Prev Button" type="TextureButton" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+texture_normal = ExtResource("2_l8s1e")
+texture_hover = ExtResource("3_64g8g")
+texture_disabled = ExtResource("6_0vdd2")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/Prev Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Prev"
+label_settings = SubResource("LabelSettings_0vdd2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Next Button" type="TextureButton" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+texture_normal = ExtResource("2_l8s1e")
+texture_hover = ExtResource("3_64g8g")
+texture_disabled = ExtResource("6_0vdd2")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/Next Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Next"
+label_settings = SubResource("LabelSettings_0vdd2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkipButton" type="TextureButton" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+texture_normal = ExtResource("2_l8s1e")
+texture_hover = ExtResource("3_64g8g")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="SkipLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/SkipButton"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Skip"
+label_settings = SubResource("LabelSettings_0vdd2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[connection signal="mouse_entered" from="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/Prev Button" to="." method="_on_next_button_mouse_entered"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/Prev Button" to="." method="_on_prev_button_pressed"]
+[connection signal="mouse_entered" from="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/Next Button" to="." method="_on_next_button_mouse_entered"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/Next Button" to="." method="_on_next_button_pressed"]
+[connection signal="mouse_entered" from="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/SkipButton" to="." method="_on_skip_button_mouse_entered"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/SkipButton" to="." method="_on_skip_button_pressed"]

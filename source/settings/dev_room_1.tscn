@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bksmk5evfkfln"]
+[gd_scene load_steps=23 format=3 uid="uid://bksmk5evfkfln"]
 
 [ext_resource type="PackedScene" uid="uid://b2ii1dwbjera2" path="res://source/gui/menus/pause_menu.tscn" id="1_i7gob"]
 [ext_resource type="Script" uid="uid://densox0ndrugk" path="res://source/settings/dev_room_1.gd" id="1_l6tno"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://8vu4176fg1b6" path="res://source/gui/menus/card_discard_menu.tscn" id="7_rsy5m"]
 [ext_resource type="Script" uid="uid://cxmkb0ao3skbl" path="res://source/scripts/DayStateMachine.gd" id="8_gt04f"]
 [ext_resource type="Texture2D" uid="uid://d0bk1sq0hnac5" path="res://assets/ui/UI_BG.png" id="9_gu6sm"]
+[ext_resource type="PackedScene" uid="uid://c4xjg2c465p1" path="res://source/gui/menus/tutorial_popup.tscn" id="9_rsy5m"]
 [ext_resource type="Texture2D" uid="uid://bjhjuhahf0lpi" path="res://assets/ui/UI_Bottom.png" id="10_3yupx"]
 [ext_resource type="Texture2D" uid="uid://b41bwcwuvkflo" path="res://assets/characters/Haachama.png" id="11_2em5d"]
 [ext_resource type="Texture2D" uid="uid://bkv1d5l3420dy" path="res://assets/cards/Discard.png" id="12_rsy5m"]
@@ -45,6 +46,9 @@ visible = false
 visible = false
 
 [node name="CardSelectMenu" parent="CanvasLayer" instance=ExtResource("7_dsn44")]
+visible = false
+
+[node name="Tutorial" parent="CanvasLayer" instance=ExtResource("9_rsy5m")]
 visible = false
 
 [node name="Hand" parent="." instance=ExtResource("2_5olku")]
